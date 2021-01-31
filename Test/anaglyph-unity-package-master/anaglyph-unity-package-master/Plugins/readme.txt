@@ -1,1 +1,0 @@
-copy here the Anaglyph plugin (along with anaglyph_plugin_data on windows)

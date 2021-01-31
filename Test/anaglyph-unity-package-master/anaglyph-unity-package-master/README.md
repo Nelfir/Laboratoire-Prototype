@@ -1,1 +1,0 @@
-Unity package of the Anaglyph Plugin
