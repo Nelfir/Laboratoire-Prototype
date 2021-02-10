@@ -38,6 +38,7 @@
         <option value="$PROJECT_DIR$/Character Controller 2D.cs" />
         <option value="$PROJECT_DIR$/CharacterController2D.cs" />
         <option value="$PROJECT_DIR$/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/CoinAnimation.cs" />
       </list>
     </option>
   </component>
@@ -69,6 +70,7 @@
       <workItem from="1612562042826" duration="6321000" />
       <workItem from="1612730349174" duration="13000" />
       <workItem from="1612730581267" duration="27000" />
+      <workItem from="1612918537536" duration="1325000" />
     </task>
     <servers />
   </component>
@@ -93,6 +95,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="755" y="281" key="run.anything.popup" timestamp="1612919263104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="755" y="281" key="run.anything.popup/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612919263104" />
     <state x="762" y="361" width="672" height="678" key="search.everywhere.popup" timestamp="1612568832362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
