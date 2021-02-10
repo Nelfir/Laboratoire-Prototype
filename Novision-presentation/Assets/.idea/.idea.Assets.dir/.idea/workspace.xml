@@ -30,14 +30,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Scripts/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CharacterSelectorManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MenuManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/MenuManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CameraFollow.cs" />
         <option value="$PROJECT_DIR$/MenuManager.cs" />
+        <option value="$PROJECT_DIR$/Scripts/MenuManager.cs" />
       </list>
     </option>
   </component>
@@ -74,6 +74,7 @@
       <workItem from="1612932589606" duration="102000" />
       <workItem from="1612932723560" duration="215000" />
       <workItem from="1612932970488" duration="9000" />
+      <workItem from="1612932996517" duration="807000" />
     </task>
     <servers />
   </component>
