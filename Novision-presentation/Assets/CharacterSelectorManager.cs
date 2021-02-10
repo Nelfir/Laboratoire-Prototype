@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CharacterSelectorManager : MonoBehaviour
 {
+
+    public CameraFollow CameraFollow;
+    
     public Button ButtonAlde;
     public Button ButtonBilly;
     public Button ButtonDavid;
@@ -24,14 +27,18 @@ public class CharacterSelectorManager : MonoBehaviour
         ButtonSam.onClick.AddListener(() => { SetCharacter(Sam); });
     }
 
-    private void SetCharacter(Object billy)
+    private void SetCharacter(GameObject mainCharacter)
     {
         // Sets every character to unactive except for the selected player
-        Alde.SetActive(billy == Alde);
-        Billy.SetActive(billy == Billy);
-        David.SetActive(billy == David);
-        Sam.SetActive(billy == Sam);
-        
+        Alde.SetActive(mainCharacter == Alde);
+        Billy.SetActive(mainCharacter == Billy);
+        David.SetActive(mainCharacter == David);
+        Sam.SetActive(mainCharacter == Sam);
+
+        // Sets the camera follow target
+        CameraFollow.followTransform = mainCharacter.transform.GetChild(0).transform;
+
+
         // Hides the UI
         this.gameObject.SetActive(false);
     }
