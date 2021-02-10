@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="17b9d35e-b9ab-40b5-896c-963e31cf0e3b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CharacterSelectorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CharacterSelectorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +92,7 @@
       <workItem from="1612585200011" duration="5465000" />
       <workItem from="1612627545821" duration="2593000" />
       <workItem from="1612662657438" duration="413000" />
-      <workItem from="1612927086667" duration="433000" />
+      <workItem from="1612927086667" duration="1030000" />
     </task>
     <servers />
   </component>
