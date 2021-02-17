@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -132,6 +134,14 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		if(other.gameObject.CompareTag("deadZone"))
+		{
+			Debug.Log("We die!");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
+	}
 
 	private void Flip()
 	{

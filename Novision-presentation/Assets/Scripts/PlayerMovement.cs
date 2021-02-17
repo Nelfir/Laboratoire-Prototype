@@ -47,7 +47,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _animator.SetBool("IsJumping", false);
     }
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Coins"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
     void FixedUpdate()
     {
         // Move our character
