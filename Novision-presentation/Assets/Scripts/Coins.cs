@@ -15,7 +15,10 @@ public class Coins : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             ScoreManager.instance.ChangeScore(coinValue);
-            Debug.Log("une piece a été récupérer");
+            Debug.Log("une piece a été récupérée");
+            
+            
+            
         }
     }
 }

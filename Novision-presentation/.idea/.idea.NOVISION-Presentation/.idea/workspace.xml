@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17b9d35e-b9ab-40b5-896c-963e31cf0e3b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NOVISION-Presentation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterController2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterController2D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Coins.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Coins.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +24,7 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/CharacterController2D.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Coins.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1o5n96onuspr2MhZwQg1b0h4R4z" />
@@ -103,7 +99,7 @@
       <workItem from="1612927086667" duration="1030000" />
       <workItem from="1613544328853" duration="3443000" />
       <workItem from="1613549583291" duration="317000" />
-      <workItem from="1613550628465" duration="818000" />
+      <workItem from="1613550628465" duration="1503000" />
     </task>
     <servers />
   </component>
