@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.planetexpress.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\rotmg\\Documents\\GitHub\\Laboratoire-Prototype\\NOVISION-Planet-Express\\PlanetExpress\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "PlanetExpress [Testing]"
+        }
+      }
+    }
+  ]
+}
