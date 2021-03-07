@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace PlanetExpress.Scripts
 {
-    
     /// <summary>
     /// The PlanetController handles the init logic of the tiles and placing and removing tiles from its surface.
     /// </summary>
@@ -27,22 +26,28 @@ namespace PlanetExpress.Scripts
 
             foreach (ArrowController arrowController in r)
             {
-                if (arrowController.TileType == TileType.Big)
+                switch (arrowController.TileType)
                 {
-                    BigCount++;
-                }
-                else if (arrowController.TileType == TileType.Big)
-                {
-                    SmallCount++;
-                }
-                else
-                {
-                    UnknownCount++;
-                    Debug.LogError("Unknown tile type for arrow controller!");
+                    case TileType.Big:
+                        BigCount++;
+                        break;
+                    case TileType.Small:
+                        SmallCount++;
+                        break;
+                    case TileType.None:
+                        UnknownCount++;
+                        Debug.LogError("Unknown tile type for arrow controller!");
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
 
-            Debug.Log("Found " + SmallCount + " small faces, " + BigCount + " big faces and " + UnknownCount + " faces for a total of " + r.Length + " faces.");
+            Debug.Log(
+                "Found " + BigCount + " big faces, " +
+                SmallCount + " small faces and " +
+                UnknownCount + " unknown faces for a total of " +
+                r.Length + " faces.");
         }
     }
 }
