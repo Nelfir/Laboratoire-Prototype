@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace PlanetExpress.Scripts
 {
     public class ArrowController : MonoBehaviour
     {
