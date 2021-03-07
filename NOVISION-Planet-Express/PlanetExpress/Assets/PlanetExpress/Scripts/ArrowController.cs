@@ -1,12 +1,20 @@
-﻿using UnityEngine;
+﻿using PlanetExpress.Scripts.Universe.Planet.Shared;
+using UnityEngine;
 
 namespace PlanetExpress.Scripts
 {
     public class ArrowController : MonoBehaviour
     {
+        public TileType TileType = TileType.None;
+
         // Start is called before the first frame update
         void Start()
         {
+            if (TileType == TileType.None)
+            {
+                Debug.LogError("No TileType set for this ArrowController!");
+            }
+
             PlaceArrowAtOriginAndRotation(GetNormalFaceRotation());
             Hide();
         }
