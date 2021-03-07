@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PlanetExpress.Scripts.Universe.Planet.Shared;
 using PlanetExpress.Scripts.Universe.Planet.TileObjects.Base;
 using PlanetExpress.Scripts.Universe.Planet.TileSlots.Base;
@@ -7,12 +8,62 @@ using UnityEngine;
 
 namespace PlanetExpress.Scripts
 {
+    public enum PlacedResult
+    {
+        OK, // Can be placed
+        TypeMismatch, // Object and Slot types do not match
+        NotEmpty // Slot is not empty
+    }
+
     /// <summary>
     /// The PlanetController handles the init logic of the tiles and placing and removing tiles from its surface.
     /// </summary>
     public class PlanetController : MonoBehaviour
     {
         [HideInInspector] public List<TileSlot> TileSlots;
+
+
+        /// <summary>
+        /// Returns the nearest TileSlot from the given TileObject's position.
+        /// </summary>
+        public List<TileSlot> GetNearestTileSlots(TileObject tileObject)
+        {
+            return TileSlots
+                .OrderBy(t => (t.gameObject.transform.position - tileObject.transform.position).sqrMagnitude)
+                .ToList();
+        }
+
+        /// <summary>
+        /// Returns the nearest placeable TileSlot from the given TileObject's position.
+        /// </summary>
+        public List<TileSlot> GetNearestPlaceableTileSlots(TileObject tileObject)
+        {
+            return TileSlots
+                .Where(x => CanBePlaced(tileObject, x) == PlacedResult.OK)
+                .OrderBy(t => (t.gameObject.transform.position - tileObject.transform.position).sqrMagnitude)
+                .ToList();
+        }
+
+        /// <summary>
+        /// Returns true if the slot type match and the slot is empty.
+        /// </summary>
+        public static PlacedResult CanBePlaced(TileObject tileObject, TileSlot tileSlot)
+        {
+            // Slot is not empty
+            if (!tileSlot.IsEmpty)
+            {
+                return PlacedResult.NotEmpty;
+            }
+
+            // Types do not match
+            if (tileObject.TileType != tileSlot.TileType)
+            {
+                return PlacedResult.TypeMismatch;
+            }
+
+            return PlacedResult.OK;
+        }
+
 
         public void Start()
         {

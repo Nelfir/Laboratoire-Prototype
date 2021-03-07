@@ -1,7 +1,5 @@
-﻿using System;
-using PlanetExpress.Scripts.Universe.Planet.Shared;
+﻿using PlanetExpress.Scripts.Universe.Planet.Shared;
 using PlanetExpress.Scripts.Universe.Planet.TileSlots;
-using PlanetExpress.Scripts.Universe.Planet.TileSlots.Base;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts
