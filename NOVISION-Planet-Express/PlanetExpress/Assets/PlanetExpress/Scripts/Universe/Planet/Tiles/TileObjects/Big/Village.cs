@@ -1,6 +1,6 @@
-﻿using PlanetExpress.Scripts.Universe.Planet.TileObjects.Base;
+﻿using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
 
-namespace PlanetExpress.Scripts.Universe.Planet.TileObjects.Big
+namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Big
 {
     public class Village : BigTileObject
     {

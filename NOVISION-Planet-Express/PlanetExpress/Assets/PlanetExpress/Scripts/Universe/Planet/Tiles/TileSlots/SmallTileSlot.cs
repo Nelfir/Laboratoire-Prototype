@@ -1,7 +1,7 @@
-﻿using PlanetExpress.Scripts.Universe.Planet.Shared;
-using PlanetExpress.Scripts.Universe.Planet.TileSlots.Base;
+﻿using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base;
 
-namespace PlanetExpress.Scripts.Universe.Planet.TileSlots
+namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots
 {
     public class SmallTileSlot : TileSlot
     {

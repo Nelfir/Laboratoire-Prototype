@@ -1,7 +1,9 @@
 ﻿using System;
-using PlanetExpress.Scripts.Universe.Planet.Shared;
-using PlanetExpress.Scripts.Universe.Planet.TileObjects.Base;
+using System.Linq;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 namespace PlanetExpress.Scripts.Shop
 {
@@ -11,9 +13,29 @@ namespace PlanetExpress.Scripts.Shop
         public int Cost;
         public TileType TileType;
 
+        private TileObject _tileObject;
+        private bool _isCurrentlyAttachedToHand;
+
         public void Start()
         {
+            InitTileObject();
             InitInfoCanvas();
+            InitHandleHoverEvents();
+        }
+
+        private void InitTileObject()
+        {
+            switch (TileType)
+            {
+                case TileType.Small:
+                    _tileObject = gameObject.AddComponent<SmallTileObject>();
+                    break;
+                case TileType.Big:
+                    _tileObject = gameObject.AddComponent<BigTileObject>();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void InitInfoCanvas()
@@ -24,6 +46,36 @@ namespace PlanetExpress.Scripts.Shop
 
             ShopItemInfo shopItemInfo = o.GetComponent<ShopItemInfo>();
             shopItemInfo.SetInfo(Name, Cost);
+        }
+
+        private void InitHandleHoverEvents()
+        {
+            // Register the grab events
+            InteractableHoverEvents interactableHoverEvents = GetComponent<InteractableHoverEvents>();
+
+            interactableHoverEvents.onAttachedToHand.AddListener(() =>
+            {
+                Debug.Log("Object " + Name + " was attached to hand.");
+                _isCurrentlyAttachedToHand = true;
+            });
+            interactableHoverEvents.onDetachedFromHand.AddListener(() =>
+            {
+                Debug.Log("Object " + Name + " was detached from hand.");
+                _isCurrentlyAttachedToHand = false;
+            });
+        }
+
+
+        public void Update()
+        {
+            if (_isCurrentlyAttachedToHand)
+            {
+                var nearestSlot = PlanetController.Instance.GetNearestPlaceableTileSlots(_tileObject);
+
+                Debug.Log("There is " + nearestSlot.Count + " possible slot(s).");
+
+                nearestSlot.First().SetArrowVisible(true);
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PlanetExpress.Scripts.Universe.Planet.Shared
+﻿namespace PlanetExpress.Scripts.Universe.Planet.Tiles.Shared
 {
     public enum TileType
     {

@@ -1,7 +1,8 @@
-﻿using PlanetExpress.Scripts.Universe.Planet.Shared;
-using PlanetExpress.Scripts.Universe.Planet.TileObjects.Base;
+﻿using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
+using UnityEngine;
 
-namespace PlanetExpress.Scripts.Universe.Planet.TileSlots.Base
+namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base
 {
     /// <summary>
     /// A tile slot on the planet.
@@ -10,8 +11,24 @@ namespace PlanetExpress.Scripts.Universe.Planet.TileSlots.Base
     public abstract class TileSlot : Tile
     {
         public TileObject ObjectInSlot;
+        public ArrowController ArrowController;
 
         public bool IsEmpty => ObjectInSlot == null;
-        
+
+        public void SetArrowVisible(bool isVisible)
+        {
+            if (ArrowController == null)
+            {
+                Debug.LogError("[TileSlot] Null ArrowController for this TileSlot!");
+                return;
+            }
+
+            ArrowController.SetVisible(isVisible);
+        }
+
+        public void SetArrowController(ArrowController arrowController)
+        {
+            this.ArrowController = arrowController;
+        }
     }
 }

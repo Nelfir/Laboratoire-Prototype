@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PlanetExpress.Scripts.Universe.Planet.Shared;
-using PlanetExpress.Scripts.Universe.Planet.TileObjects.Base;
-using PlanetExpress.Scripts.Universe.Planet.TileSlots.Base;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base;
 using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
 using UnityEngine;
 
@@ -22,8 +22,7 @@ namespace PlanetExpress.Scripts
     public class PlanetController : Singleton<PlanetController>
     {
         [HideInInspector] public List<TileSlot> TileSlots;
-
-
+        
         /// <summary>
         /// Returns the nearest TileSlot from the given TileObject's position.
         /// </summary>

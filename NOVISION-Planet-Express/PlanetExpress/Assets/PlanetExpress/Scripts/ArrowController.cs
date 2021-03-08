@@ -1,5 +1,6 @@
-﻿using PlanetExpress.Scripts.Universe.Planet.Shared;
-using PlanetExpress.Scripts.Universe.Planet.TileSlots;
+﻿using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts
@@ -20,18 +21,22 @@ namespace PlanetExpress.Scripts
             PlaceArrowAtOriginAndRotation(GetNormalFaceRotation());
             CreateTileSlotComponentOnParent();
 
-            Hide();
+            SetVisible(false);
         }
 
         private void CreateTileSlotComponentOnParent()
         {
+            TileSlot tileSlot;
+
             switch (TileType)
             {
                 case TileType.Big:
-                    gameObject.transform.parent.gameObject.AddComponent<BigTileSlot>();
+                    tileSlot = gameObject.transform.parent.gameObject.AddComponent<BigTileSlot>();
+                    tileSlot.SetArrowController(this);
                     break;
                 case TileType.Small:
-                    gameObject.transform.parent.gameObject.AddComponent<SmallTileSlot>();
+                    tileSlot = gameObject.transform.parent.gameObject.AddComponent<SmallTileSlot>();
+                    tileSlot.SetArrowController(this);
                     break;
                 default:
                     Debug.Log("[ArrowController] Unknown TileType!");
@@ -39,10 +44,10 @@ namespace PlanetExpress.Scripts
             }
         }
 
-        private void Hide()
+        public void SetVisible(bool isVisible)
         {
             Renderer r = GetComponentInChildren<MeshRenderer>();
-            r.enabled = false;
+            r.enabled = isVisible;
         }
 
         private Quaternion GetNormalFaceRotation()

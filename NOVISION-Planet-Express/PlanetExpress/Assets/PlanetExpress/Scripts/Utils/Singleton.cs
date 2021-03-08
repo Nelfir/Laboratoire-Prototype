@@ -1,8 +1,8 @@
-﻿namespace PlanetExpress.Scripts.Utils
-{
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Scripts.Utils.Objects
+namespace PlanetExpress.Scripts.Utils
+{
+    namespace Scripts.Utils.Objects
 {
     public abstract class Singleton<T> : MonoBehaviour where T : Component
     {
