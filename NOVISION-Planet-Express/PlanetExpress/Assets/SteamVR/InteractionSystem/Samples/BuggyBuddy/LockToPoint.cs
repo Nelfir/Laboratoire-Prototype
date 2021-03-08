@@ -14,7 +14,7 @@ namespace Valve.VR.InteractionSystem.Sample
         private float dropTimer;
         private Interactable interactable;
 
-        private void Start()
+        protected void Start()
         {
             interactable = GetComponent<Interactable>();
             body = GetComponent<Rigidbody>();

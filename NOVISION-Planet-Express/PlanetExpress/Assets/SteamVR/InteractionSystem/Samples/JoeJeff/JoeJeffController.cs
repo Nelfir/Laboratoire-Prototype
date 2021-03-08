@@ -7,7 +7,6 @@ namespace Valve.VR.InteractionSystem.Sample
 {
     public class JoeJeffController : MonoBehaviour
     {
-        public Transform Joystick;
         public float joyMove = 0.1f;
 
         public SteamVR_Action_Vector2 moveAction = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("platformer", "Move");
@@ -46,15 +45,13 @@ namespace Valve.VR.InteractionSystem.Sample
                 glow = 0;
             }
 
-            Joystick.localPosition = movement * joyMove;
-
             float rot = transform.eulerAngles.y;
 
             movement = Quaternion.AngleAxis(rot, Vector3.up) * movement;
 
             jumpHighlight.sharedMaterial.SetColor("_EmissionColor", Color.white * glow);
 
-            character.Move(movement * 2, jump);
+            //character.Move(movement * 2, jump);
         }
     }
 }

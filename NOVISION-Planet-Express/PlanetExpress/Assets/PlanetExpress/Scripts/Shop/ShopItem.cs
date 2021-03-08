@@ -2,6 +2,7 @@
 using System.Linq;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
@@ -65,6 +66,8 @@ namespace PlanetExpress.Scripts.Shop
             });
         }
 
+        private TileSlot nearestTileSlot;
+
 
         public void Update()
         {
@@ -74,7 +77,21 @@ namespace PlanetExpress.Scripts.Shop
 
                 Debug.Log("There is " + nearestSlot.Count + " possible slot(s).");
 
-                nearestSlot.First().SetArrowVisible(true);
+                var newNearestTileSlot = nearestSlot.FirstOrDefault();
+
+                if (newNearestTileSlot == null)
+                {
+                    Debug.Log("Null nearest slot.");
+                    return;
+                }
+
+                if (newNearestTileSlot != nearestTileSlot)
+                {
+                    nearestTileSlot.SetArrowVisible(false);
+
+                    nearestTileSlot = newNearestTileSlot;
+                    nearestTileSlot.SetArrowVisible(true);
+                }
             }
         }
     }

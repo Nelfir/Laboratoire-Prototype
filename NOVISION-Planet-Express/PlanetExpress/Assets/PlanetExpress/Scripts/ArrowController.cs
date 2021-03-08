@@ -15,7 +15,6 @@ namespace PlanetExpress.Scripts
             if (TileType == default)
             {
                 Debug.LogError("[ArrowController] No TileType set for this ArrowController!");
-                Destroy(this);
             }
 
             PlaceArrowAtOriginAndRotation(GetNormalFaceRotation());
