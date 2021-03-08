@@ -4,6 +4,7 @@ using System.Linq;
 using PlanetExpress.Scripts.Universe.Planet.Shared;
 using PlanetExpress.Scripts.Universe.Planet.TileObjects.Base;
 using PlanetExpress.Scripts.Universe.Planet.TileSlots.Base;
+using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts
@@ -18,7 +19,7 @@ namespace PlanetExpress.Scripts
     /// <summary>
     /// The PlanetController handles the init logic of the tiles and placing and removing tiles from its surface.
     /// </summary>
-    public class PlanetController : MonoBehaviour
+    public class PlanetController : Singleton<PlanetController>
     {
         [HideInInspector] public List<TileSlot> TileSlots;
 
@@ -64,12 +65,11 @@ namespace PlanetExpress.Scripts
             return PlacedResult.OK;
         }
 
-
         public void Start()
         {
             var r = GetComponentsInChildren<ArrowController>();
 
-            Debug.Log("Found " + r.Length + " faces.");
+            Debug.Log("[PlanetController] Found " + r.Length + " faces.");
 
             int SmallCount = 0;
             int BigCount = 0;
@@ -85,17 +85,15 @@ namespace PlanetExpress.Scripts
                     case TileType.Small:
                         SmallCount++;
                         break;
-                    case TileType.None:
-                        UnknownCount++;
-                        Debug.LogError("Unknown tile type for arrow controller!");
-                        break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        UnknownCount++;
+                        Debug.LogError("[PlanetController] Unknown tile type for arrow controller!");
+                        break;
                 }
             }
 
             Debug.Log(
-                "Found " + BigCount + " big faces, " +
+                "[PlanetController] Found " + BigCount + " big faces, " +
                 SmallCount + " small faces and " +
                 UnknownCount + " unknown faces for a total of " +
                 r.Length + " faces.");

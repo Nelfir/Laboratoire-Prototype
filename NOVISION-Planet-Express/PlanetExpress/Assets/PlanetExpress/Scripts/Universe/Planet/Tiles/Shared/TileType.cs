@@ -2,9 +2,6 @@
 {
     public enum TileType
     {
-        // The default tile Type.
-        None,
-        
         // A small pentagonal tile. 
         // Such as Radars and Turrets.
         Small,

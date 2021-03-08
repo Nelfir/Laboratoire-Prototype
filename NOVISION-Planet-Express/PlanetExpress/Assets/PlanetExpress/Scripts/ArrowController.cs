@@ -6,14 +6,14 @@ namespace PlanetExpress.Scripts
 {
     public class ArrowController : MonoBehaviour
     {
-        public TileType TileType = TileType.None;
+        public TileType TileType;
 
         // Start is called before the first frame update
         void Start()
         {
-            if (TileType == TileType.None)
+            if (TileType == default)
             {
-                Debug.LogError("No TileType set for this ArrowController!");
+                Debug.LogError("[ArrowController] No TileType set for this ArrowController!");
                 Destroy(this);
             }
 
@@ -33,9 +33,8 @@ namespace PlanetExpress.Scripts
                 case TileType.Small:
                     gameObject.transform.parent.gameObject.AddComponent<SmallTileSlot>();
                     break;
-                case TileType.None:
                 default:
-                    Debug.Log("Unknown TileType!");
+                    Debug.Log("[ArrowController] Unknown TileType!");
                     break;
             }
         }
