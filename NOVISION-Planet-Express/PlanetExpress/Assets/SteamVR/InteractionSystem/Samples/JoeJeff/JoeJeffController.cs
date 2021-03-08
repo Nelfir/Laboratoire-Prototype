@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-namespace Valve.VR.InteractionSystem.Sample
+namespace SteamVR.InteractionSystem.Samples.JoeJeff
 {
     public class JoeJeffController : MonoBehaviour
     {
@@ -11,9 +10,7 @@ namespace Valve.VR.InteractionSystem.Sample
 
         public SteamVR_Action_Vector2 moveAction = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("platformer", "Move");
         public SteamVR_Action_Boolean jumpAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("platformer", "Jump");
-
-        public JoeJeff character;
-
+        
         public Renderer jumpHighlight;
 
         private Vector3 movement;
