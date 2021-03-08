@@ -37,7 +37,7 @@ namespace PlanetExpress.Scripts
         /// <summary>
         /// Returns true if the slot type match and the slot is empty.
         /// </summary>
-        public static PlacedResult CanBePlaced(TileObject tileObject, TileSlot tileSlot, bool printDebug = true)
+        public PlacedResult CanBePlaced(TileObject tileObject, TileSlot tileSlot, bool printDebug = true)
         {
             // Slot is not empty
             if (!tileSlot.IsEmpty)

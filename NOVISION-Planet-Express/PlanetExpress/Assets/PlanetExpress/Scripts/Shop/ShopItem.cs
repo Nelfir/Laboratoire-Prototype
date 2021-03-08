@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using PlanetExpress.Scripts.Currency;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base;
+using PlanetExpress.Scripts.Utils.VR;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
@@ -64,6 +66,39 @@ namespace PlanetExpress.Scripts.Shop
             {
                 Debug.Log("Object " + Name + " was detached from hand.");
                 _isCurrentlyAttachedToHand = false;
+
+
+                PlacedResult placedResult = PlanetController.Instance.CanBePlaced(_tileObject, nearestTileSlot);
+
+                switch (placedResult)
+                {
+                    case PlacedResult.OK:
+                    {
+                        Debug.Log("Placing tile here...");
+                        Debug.Log("Cost : " + Cost);
+
+                        if (CurrencyController.Instance.Money < Cost)
+                        {
+                            Debug.LogError("Not enough gold!");
+                            return;
+                        }
+                        
+                        CurrencyController.Instance.UpdateMoney(-Cost);
+
+                        LockToPointOrigin lockToPointOrigin = GetComponent<LockToPointOrigin>();
+                        lockToPointOrigin.snapTo = nearestTileSlot.transform;
+
+                        break;
+                    }
+                    case PlacedResult.NotEmpty:
+                        Debug.LogError("Can't place this ShopItem here. The slot is not empty!");
+                        break;
+                    case PlacedResult.TypeMismatch:
+                        Debug.LogError("Can't place this ShopItem here. The type is mismatched!");
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             });
         }
 
