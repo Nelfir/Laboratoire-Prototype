@@ -22,21 +22,11 @@ namespace PlanetExpress.Scripts
     public class PlanetController : Singleton<PlanetController>
     {
         [HideInInspector] public List<TileSlot> TileSlots;
-        
-        /// <summary>
-        /// Returns the nearest TileSlot from the given TileObject's position.
-        /// </summary>
-        public List<TileSlot> GetNearestTileSlots(TileObject tileObject)
-        {
-            return TileSlots
-                .OrderBy(t => (t.gameObject.transform.position - tileObject.transform.position).sqrMagnitude)
-                .ToList();
-        }
 
         /// <summary>
         /// Returns the nearest placeable TileSlot from the given TileObject's position.
         /// </summary>
-        public List<TileSlot> GetNearestPlaceableTileSlots(TileObject tileObject)
+        public List<TileSlot> GetNearestPlaceableTileSlots(TileObject tileObject, bool onlyPlaceable)
         {
             return TileSlots
                 .Where(x => CanBePlaced(tileObject, x) == PlacedResult.OK)
@@ -47,7 +37,7 @@ namespace PlanetExpress.Scripts
         /// <summary>
         /// Returns true if the slot type match and the slot is empty.
         /// </summary>
-        public static PlacedResult CanBePlaced(TileObject tileObject, TileSlot tileSlot)
+        public static PlacedResult CanBePlaced(TileObject tileObject, TileSlot tileSlot, bool printDebug = true)
         {
             // Slot is not empty
             if (!tileSlot.IsEmpty)
@@ -89,7 +79,11 @@ namespace PlanetExpress.Scripts
                         Debug.LogError("[PlanetController] Unknown tile type for arrow controller!");
                         break;
                 }
+
+                // Register the TileSlot in the PlanetController
+                TileSlots.Add(arrowController.TileSlot);
             }
+
 
             Debug.Log(
                 "[PlanetController] Found " + BigCount + " big faces, " +

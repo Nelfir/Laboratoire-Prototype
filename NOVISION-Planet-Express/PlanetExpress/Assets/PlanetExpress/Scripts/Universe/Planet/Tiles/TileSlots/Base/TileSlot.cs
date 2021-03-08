@@ -17,13 +17,7 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base
 
         public void SetArrowVisible(bool isVisible)
         {
-            if (ArrowController == null)
-            {
-                Debug.LogError("[TileSlot] Null ArrowController for this TileSlot!");
-                return;
-            }
-
-            ArrowController.SetVisible(isVisible);
+            ArrowController.SetOriginPointIsVisible(isVisible);
         }
 
         public void SetArrowController(ArrowController arrowController)

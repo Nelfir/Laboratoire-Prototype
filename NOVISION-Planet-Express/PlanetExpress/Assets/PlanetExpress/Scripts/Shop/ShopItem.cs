@@ -46,7 +46,7 @@ namespace PlanetExpress.Scripts.Shop
             GameObject o = Instantiate(canvasInfo, gameObject.transform);
 
             ShopItemInfo shopItemInfo = o.GetComponent<ShopItemInfo>();
-            shopItemInfo.SetInfo(Name, Cost);
+            shopItemInfo.SetInfo(Name, Cost, TileType);
         }
 
         private void InitHandleHoverEvents()
@@ -59,6 +59,7 @@ namespace PlanetExpress.Scripts.Shop
                 Debug.Log("Object " + Name + " was attached to hand.");
                 _isCurrentlyAttachedToHand = true;
             });
+
             interactableHoverEvents.onDetachedFromHand.AddListener(() =>
             {
                 Debug.Log("Object " + Name + " was detached from hand.");
@@ -68,12 +69,11 @@ namespace PlanetExpress.Scripts.Shop
 
         private TileSlot nearestTileSlot;
 
-
         public void Update()
         {
             if (_isCurrentlyAttachedToHand)
             {
-                var nearestSlot = PlanetController.Instance.GetNearestPlaceableTileSlots(_tileObject);
+                var nearestSlot = PlanetController.Instance.GetNearestPlaceableTileSlots(_tileObject, true);
 
                 Debug.Log("There is " + nearestSlot.Count + " possible slot(s).");
 
@@ -85,10 +85,14 @@ namespace PlanetExpress.Scripts.Shop
                     return;
                 }
 
-                if (newNearestTileSlot != nearestTileSlot)
+                if (nearestTileSlot == null)
+                {
+                    nearestTileSlot = newNearestTileSlot;
+                    nearestTileSlot.SetArrowVisible(true);
+                }
+                else
                 {
                     nearestTileSlot.SetArrowVisible(false);
-
                     nearestTileSlot = newNearestTileSlot;
                     nearestTileSlot.SetArrowVisible(true);
                 }

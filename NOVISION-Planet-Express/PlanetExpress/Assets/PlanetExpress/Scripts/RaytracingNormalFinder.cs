@@ -4,6 +4,8 @@ namespace PlanetExpress.Scripts
 {
     public class RaytracingNormalFinder : MonoBehaviour
     {
+        public bool DebugRaytracingNormals;
+
         public Quaternion FindNormalRotation()
         {
             RaycastHit hit;
@@ -38,9 +40,8 @@ namespace PlanetExpress.Scripts
                 Debug.DrawLine(p0, p1);
                 Debug.DrawLine(p1, p2);
                 Debug.DrawLine(p2, p0);
-
-
-                Debug.Log("Did Hit " + hit.normal + ", " + rot.eulerAngles);
+                
+                if (DebugRaytracingNormals) Debug.Log("Did Hit " + hit.normal + ", " + rot.eulerAngles);
                 return rot;
             }
 

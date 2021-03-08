@@ -10,7 +10,7 @@ namespace SteamVR.InteractionSystem.Samples.JoeJeff
 
         public SteamVR_Action_Vector2 moveAction = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("platformer", "Move");
         public SteamVR_Action_Boolean jumpAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("platformer", "Jump");
-        
+
         public Renderer jumpHighlight;
 
         private Vector3 movement;

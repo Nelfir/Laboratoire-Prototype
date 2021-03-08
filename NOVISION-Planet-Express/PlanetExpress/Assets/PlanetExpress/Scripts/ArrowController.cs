@@ -5,37 +5,32 @@ using UnityEngine;
 
 namespace PlanetExpress.Scripts
 {
+    [DefaultExecutionOrder(-999)]
     public class ArrowController : MonoBehaviour
     {
+        public TileSlot TileSlot;
         public TileType TileType;
 
         // Start is called before the first frame update
         void Start()
         {
-            if (TileType == default)
-            {
-                Debug.LogError("[ArrowController] No TileType set for this ArrowController!");
-            }
-
             PlaceArrowAtOriginAndRotation(GetNormalFaceRotation());
             CreateTileSlotComponentOnParent();
-
-            SetVisible(false);
+            Hide();
+            SetOriginPointIsVisible(false);
         }
 
         private void CreateTileSlotComponentOnParent()
         {
-            TileSlot tileSlot;
-
             switch (TileType)
             {
                 case TileType.Big:
-                    tileSlot = gameObject.transform.parent.gameObject.AddComponent<BigTileSlot>();
-                    tileSlot.SetArrowController(this);
+                    TileSlot = gameObject.transform.parent.gameObject.AddComponent<BigTileSlot>();
+                    TileSlot.SetArrowController(this);
                     break;
                 case TileType.Small:
-                    tileSlot = gameObject.transform.parent.gameObject.AddComponent<SmallTileSlot>();
-                    tileSlot.SetArrowController(this);
+                    TileSlot = gameObject.transform.parent.gameObject.AddComponent<SmallTileSlot>();
+                    TileSlot.SetArrowController(this);
                     break;
                 default:
                     Debug.Log("[ArrowController] Unknown TileType!");
@@ -43,10 +38,15 @@ namespace PlanetExpress.Scripts
             }
         }
 
-        public void SetVisible(bool isVisible)
+        public void Hide()
         {
             Renderer r = GetComponentInChildren<MeshRenderer>();
-            r.enabled = isVisible;
+            r.enabled = false;
+        }
+        
+        public void SetOriginPointIsVisible(bool isOriginPointVisible)
+        {
+            GetComponent<OriginPointCreator>().Origin.SetActive(isOriginPointVisible);
         }
 
         private Quaternion GetNormalFaceRotation()

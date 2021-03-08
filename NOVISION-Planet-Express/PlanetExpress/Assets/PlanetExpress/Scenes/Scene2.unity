@@ -343,7 +343,7 @@ PrefabInstance:
     - target: {fileID: 1776245253356323795, guid: 508142a4833ade241aec2d043e18d6d5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.65
+      value: 1.233
       objectReference: {fileID: 0}
     - target: {fileID: 1776245253356323795, guid: 508142a4833ade241aec2d043e18d6d5,
         type: 3}
@@ -709,7 +709,6 @@ GameObject:
   - component: {fileID: 1423037904}
   - component: {fileID: 1423037903}
   - component: {fileID: 1423037902}
-  - component: {fileID: 1423037905}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -791,21 +790,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423037900}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1423037905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423037900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0871859e3eaf4be683338059bbfd3e40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Hello!
-  Cost: 10
-  TileType: 0
 --- !u!1 &2024234446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,27 +1396,6 @@ MonoBehaviour:
   velocityAverageFrames: 5
   angularVelocityAverageFrames: 11
   estimateOnAwake: 0
---- !u!114 &6219885890812701094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6325295414218172824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c178cd2631c07944bc48d4c9d824edb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joyMove: 0.015
-  moveAction:
-    actionPath: /actions/platformer/in/Move
-    needsReinit: 0
-  jumpAction:
-    actionPath: /actions/platformer/in/Jump
-    needsReinit: 0
-  character: {fileID: 0}
-  jumpHighlight: {fileID: 0}
 --- !u!114 &6219885931301972080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,11 +1488,12 @@ GameObject:
   - component: {fileID: 6325955308121685908}
   - component: {fileID: 6303811951658178696}
   - component: {fileID: 6278745765640345048}
-  - component: {fileID: 6219885890812701094}
   - component: {fileID: 6219885889373169504}
   - component: {fileID: 6219885890132561110}
   - component: {fileID: 6219885931301972080}
+  - component: {fileID: 6325295414218172826}
   - component: {fileID: 1405721165}
+  - component: {fileID: 6325295414218172825}
   m_Layer: 0
   m_Name: ShopItemGrabbable
   m_TagString: Untagged
@@ -1537,6 +1501,45 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6325295414218172825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325295414218172824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0871859e3eaf4be683338059bbfd3e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Hello!
+  Cost: 10
+  TileType: 0
+--- !u!114 &6325295414218172826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325295414218172824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4153b26428ccf041950b92c057812a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHandHoverBegin:
+    m_PersistentCalls:
+      m_Calls: []
+  onHandHoverEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onAttachedToHand:
+    m_PersistentCalls:
+      m_Calls: []
+  onDetachedFromHand:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &6325955308121685908
 Transform:
   m_ObjectHideFlags: 0

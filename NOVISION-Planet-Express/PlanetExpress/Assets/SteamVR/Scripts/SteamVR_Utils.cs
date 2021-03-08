@@ -469,7 +469,7 @@ public static class SteamVR_Utils
 
 	public static object CallSystemFn(SystemFn fn, params object[] args)
 	{
-		var initOpenVR = (!SteamVR.active && !SteamVR.usingNativeSupport);
+		var initOpenVR = (!Valve.VR.SteamVR.active && !Valve.VR.SteamVR.usingNativeSupport);
 		if (initOpenVR)
 		{
 			var error = EVRInitError.None;
