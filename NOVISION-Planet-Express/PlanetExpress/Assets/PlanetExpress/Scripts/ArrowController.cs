@@ -11,9 +11,13 @@ namespace PlanetExpress.Scripts
         public TileSlot TileSlot;
         public TileType TileType;
 
+        public OriginPointCreator OriginPointCreator;
+
         // Start is called before the first frame update
         void Start()
         {
+            OriginPointCreator = GetComponent<OriginPointCreator>();
+
             PlaceArrowAtOriginAndRotation(GetNormalFaceRotation());
             CreateTileSlotComponentOnParent();
             Hide();
@@ -43,10 +47,10 @@ namespace PlanetExpress.Scripts
             Renderer r = GetComponentInChildren<MeshRenderer>();
             r.enabled = false;
         }
-        
+
         public void SetOriginPointIsVisible(bool isOriginPointVisible)
         {
-            GetComponent<OriginPointCreator>().Origin.SetActive(isOriginPointVisible);
+            OriginPointCreator.Origin.SetActive(isOriginPointVisible);
         }
 
         private Quaternion GetNormalFaceRotation()
@@ -57,13 +61,12 @@ namespace PlanetExpress.Scripts
         // Places the arrow facing the origin with the correct rotation
         private void PlaceArrowAtOriginAndRotation(Quaternion rotation)
         {
-            OriginPointCreator originPointCreator = GetComponent<OriginPointCreator>();
-            originPointCreator.SetRotation(rotation);
+            OriginPointCreator.SetRotation(rotation);
 
             transform.localPosition = new Vector3(0, 0, 0);
-            transform.parent.SetParent(originPointCreator.transform, false);
+            transform.parent.SetParent(OriginPointCreator.transform, false);
             transform.position += transform.up * -10;
-            transform.up = originPointCreator.transform.up;
+            transform.up = OriginPointCreator.transform.up;
         }
     }
 }

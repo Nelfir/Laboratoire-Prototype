@@ -6,9 +6,10 @@ namespace PlanetExpress.Scripts.Currency
     public class CurrencyController : Singleton<CurrencyController>
     {
         public int Money { get; private set; }
-        
-        public void Start()
+
+        protected override void Awake()
         {
+            base.Awake();
             Money = int.MaxValue;
         }
 

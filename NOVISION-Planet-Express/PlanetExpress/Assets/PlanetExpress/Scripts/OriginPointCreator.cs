@@ -10,7 +10,7 @@ namespace PlanetExpress.Scripts
         [HideInInspector] public GameObject Origin;
 
         private GameObject _prefabSphereRotation;
-        
+
         // Start is called before the first frame update
         void Awake()
         {
