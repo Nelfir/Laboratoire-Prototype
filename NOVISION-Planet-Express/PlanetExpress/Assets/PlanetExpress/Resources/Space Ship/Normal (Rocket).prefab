@@ -47,15 +47,15 @@ MonoBehaviour:
   Name: Normal (Rocket)
   MaxHealth: 100
   Speed: 1
-  Level: 0
+  Level: 1
   BulletSpawnPoints:
   - {fileID: 3462764212960888815}
-  BulletPrefab: {fileID: 7301780688077574041, guid: 06310f50dfae00146b6b941743bb1242,
+  BulletPrefab: {fileID: 652106299000229712, guid: 38b4279dd75567c49b8ee5d2a19f33f3,
     type: 3}
-  BulletDamage: 0
-  BulletFrequency: 0
+  BulletDamage: 10
+  BulletDelay: 3
   CurrentHealth: 0
-  TargetPosition: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &978661027501384104
 PrefabInstance:
   m_ObjectHideFlags: 0

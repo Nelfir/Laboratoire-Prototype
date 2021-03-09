@@ -47,16 +47,16 @@ MonoBehaviour:
   Name: Normal (Machine Gun)
   MaxHealth: 100
   Speed: 1
-  Level: 0
+  Level: 1
   BulletSpawnPoints:
   - {fileID: 5590883758685322350}
   - {fileID: 7738678395940112364}
-  BulletPrefab: {fileID: 7413639062636816327, guid: da50e1215c7d73343a9c0d766e260469,
+  BulletPrefab: {fileID: 4747961509672775488, guid: 7d8ec570e3519ab4997b8b8c14540e7f,
     type: 3}
   BulletDamage: 10
-  BulletFrequency: 1
+  BulletDelay: 3
   CurrentHealth: 0
-  TargetPosition: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &2800173982131696575
 PrefabInstance:
   m_ObjectHideFlags: 0

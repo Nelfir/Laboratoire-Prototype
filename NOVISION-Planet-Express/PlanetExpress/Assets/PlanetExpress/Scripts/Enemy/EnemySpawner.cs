@@ -7,9 +7,14 @@ namespace PlanetExpress.Scripts.Enemy
 {
     public enum EnemyType
     {
-        Normal,
-        Speeders,
-        Glacier
+        NormalRocket,
+        NormalMachineGun,
+        FragileSpeedersRocket,
+        FragileSpeedersMachineGun,
+        MightyGlacierRocket,
+        MightyGlacierMachineGun,
+        HybridMachineGun,
+        HybridRocket,
     }
 
     /// <summary>
@@ -21,21 +26,9 @@ namespace PlanetExpress.Scripts.Enemy
 
         #region Builder Patern for Enemies
 
-        public WaveSpawnDetails AddNormal(int count = 1)
+        public WaveSpawnDetails Add(EnemyType enemyType, int count = 1)
         {
-            for (int i = 0; i < count; i++) Enemies.Add(EnemyType.Normal);
-            return this;
-        }
-
-        public WaveSpawnDetails AddSpeeders(int count = 1)
-        {
-            for (int i = 0; i < count; i++) Enemies.Add(EnemyType.Speeders);
-            return this;
-        }
-
-        public WaveSpawnDetails AddGlacier(int count = 1)
-        {
-            for (int i = 0; i < count; i++) Enemies.Add(EnemyType.Glacier);
+            for (int i = 0; i < count; i++) Enemies.Add(enemyType);
             return this;
         }
 
@@ -73,33 +66,33 @@ namespace PlanetExpress.Scripts.Enemy
             {
                 1, new Wave(1, "First Wave", 60,
                     new WaveSpawnDetails()
-                        .AddNormal(3)
+                        .Add(EnemyType.NormalRocket, 3)
                 )
             },
             {
                 2, new Wave(2, "Second Wave", 60,
                     new WaveSpawnDetails()
-                        .AddNormal(5)
+                        .Add(EnemyType.NormalRocket, 5)
                 )
             },
             {
                 3, new Wave(3, "Third Wave", 60,
                     new WaveSpawnDetails()
-                        .AddSpeeders(2)
+                        .Add(EnemyType.NormalMachineGun, 2)
                 )
             },
             {
                 4, new Wave(4, "Fourth Wave", 60,
                     new WaveSpawnDetails()
-                        .AddNormal(10)
+                        .Add(EnemyType.NormalRocket, 10)
                 )
             },
             {
                 5, new Wave(5, "Fifth Wave", 60,
                     new WaveSpawnDetails()
-                        .AddNormal(5)
-                        .AddSpeeders(2)
-                        .AddGlacier()
+                        .Add(EnemyType.NormalRocket, 3)
+                        .Add(EnemyType.NormalMachineGun, 2)
+                        .Add(EnemyType.MightyGlacierRocket)
                 )
             },
             // End wave
