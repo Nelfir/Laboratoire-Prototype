@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace PlanetExpress.Scripts.Enemy
 {
@@ -22,14 +23,19 @@ namespace PlanetExpress.Scripts.Enemy
     /// </summary>
     public class WaveSpawnDetails
     {
-        public List<EnemyType> Enemies = new List<EnemyType>();
+        public Stack<GameObject> Enemies = new Stack<GameObject>();
 
         #region Builder Patern for Enemies
 
-        public WaveSpawnDetails Add(EnemyType enemyType, int count = 1)
+        public WaveSpawnDetails Add(GameObject enemyType, int count = 1)
         {
-            for (int i = 0; i < count; i++) Enemies.Add(enemyType);
+            for (int i = 0; i < count; i++) Enemies.Push(enemyType);
             return this;
+        }
+
+        public GameObject EnemyPopNext()
+        {
+            return Enemies.Pop();
         }
 
         #endregion
@@ -66,33 +72,33 @@ namespace PlanetExpress.Scripts.Enemy
             {
                 1, new Wave(1, "First Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyType.NormalRocket, 3)
+                        .Add(EnemyList.NormalRocket, 3)
                 )
             },
             {
                 2, new Wave(2, "Second Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyType.NormalRocket, 5)
+                        .Add(EnemyList.NormalRocket, 5)
                 )
             },
             {
                 3, new Wave(3, "Third Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyType.NormalMachineGun, 2)
+                        .Add(EnemyList.NormalMachineGun, 2)
                 )
             },
             {
                 4, new Wave(4, "Fourth Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyType.NormalRocket, 10)
+                        .Add(EnemyList.NormalRocket, 10)
                 )
             },
             {
                 5, new Wave(5, "Fifth Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyType.NormalRocket, 3)
-                        .Add(EnemyType.NormalMachineGun, 2)
-                        .Add(EnemyType.MightyGlacierRocket)
+                        .Add(EnemyList.NormalRocket, 3)
+                        .Add(EnemyList.NormalMachineGun, 2)
+                        .Add(EnemyList.MightyGlacierRocket)
                 )
             },
             // End wave
@@ -118,17 +124,21 @@ namespace PlanetExpress.Scripts.Enemy
         public readonly int Index;
         public readonly string Name;
 
-        public readonly float DurationSeconds;
+        public readonly float TotalWaveDurationSeconds;
 
         public WaveSpawnDetails WaveSpawnDetails;
 
-        public Wave(int index, string name, float durationSeconds, WaveSpawnDetails waveSpawnDetails)
+        public Wave(int index, string name, float totalWaveDurationSeconds, WaveSpawnDetails waveSpawnDetails)
         {
             Index = index;
             Name = name;
-            DurationSeconds = durationSeconds;
+            TotalWaveDurationSeconds = totalWaveDurationSeconds;
             WaveSpawnDetails = waveSpawnDetails;
         }
+
+        public float EnemySpawnDelay => TotalWaveDurationSeconds / WaveSpawnDetails.Enemies.Count;
+
+        public int EnemyCount => WaveSpawnDetails.Enemies.Count;
     }
 
 
@@ -146,6 +156,38 @@ namespace PlanetExpress.Scripts.Enemy
         {
             Waves.NextWave();
             Debug.Log("Next wave : " + Waves.CurrentWave.Name);
+            StartCoroutine(nameof(GoWave));
+        }
+
+        private IEnumerator GoWave()
+        {
+            for (int i = 0; i < Waves.CurrentWave.EnemyCount; i++)
+            {
+                GameObject nextEnemy = Waves.CurrentWave.WaveSpawnDetails.EnemyPopNext();
+
+                if (nextEnemy == null)
+                {
+                    Debug.LogError("Can't spawn enemy, it is null. " + nextEnemy);
+                    continue;
+                }
+
+                Debug.Log("Spawning : " + nextEnemy.name);
+                GameObject g = Instantiate(nextEnemy);
+                g.transform.position = GetNextEnemyPosition();
+
+                /* Debug.Log("Waiting for " + Waves.CurrentWave.EnemySpawnDelay + " seconds (...");
+                 yield return new WaitForSeconds(Waves.CurrentWave.EnemySpawnDelay);*/
+            }
+
+            Debug.Log("Waiting for " + Waves.CurrentWave.EnemySpawnDelay + " seconds (after wave)...");
+            yield return new WaitForSeconds(Waves.CurrentWave.TotalWaveDurationSeconds);
+
+            NextWave();
+        }
+
+        private Vector3 GetNextEnemyPosition()
+        {
+            return transform.position * Random.insideUnitCircle * 5;
         }
     }
 }
