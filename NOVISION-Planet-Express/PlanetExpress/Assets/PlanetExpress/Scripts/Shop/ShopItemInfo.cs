@@ -12,14 +12,13 @@ namespace PlanetExpress.Scripts.Shop
         public TextMeshProUGUI TMP_Cost;
         public TextMeshProUGUI TMP_TileType;
 
-        public void SetInfo(string _name, int _cost, TileType _tileType)
+        public void SetInfo(string _name, int _cost)
         {
             
             Debug.Log("Setting name of " + _name);
             
             TMP_Name.text = _name;
             TMP_Cost.text = "$" + _cost;
-            TMP_TileType.text = "Tile Type : " + _tileType;
         }
     }
 }

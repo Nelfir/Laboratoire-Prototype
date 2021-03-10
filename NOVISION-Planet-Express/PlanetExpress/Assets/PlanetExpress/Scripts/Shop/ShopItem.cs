@@ -3,7 +3,6 @@ using System.Linq;
 using PlanetExpress.Scripts.Currency;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
-using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base;
 using PlanetExpress.Scripts.Utils.VR;
 using UnityEditor;
 using UnityEngine;
@@ -28,11 +27,9 @@ namespace PlanetExpress.Scripts.Shop
             // Creates the UI with the name and cost text
             GameObject o = Resources.Load<GameObject>("CanvasShopItemDescription");
             canvasInfo = Instantiate(o, gameObject.transform);
-            
-            TileType tileType = GetComponent<DraggableTile>().TileType;
 
             ShopItemInfo shopItemInfo = canvasInfo.GetComponent<ShopItemInfo>();
-            shopItemInfo.SetInfo(Name, Cost, tileType);
+            shopItemInfo.SetInfo(Name, Cost);
         }
 
         public void OnDestroy()

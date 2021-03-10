@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
 using PlanetExpress.Scripts.Currency;
+using PlanetExpress.Scripts.Planet;
 using PlanetExpress.Scripts.Shop;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
-using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots.Base;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using PlanetExpress.Scripts.Utils.VR;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
@@ -13,32 +14,18 @@ namespace PlanetExpress.Scripts
 {
     public class DraggableTile : MonoBehaviour
     {
-        public TileType TileType;
-
         private TileObject _tileObject;
         private bool _isCurrentlyAttachedToHand;
-
-
+        
         public void Start()
         {
             InitTileObject();
             InitHandleHoverEvents();
         }
-
-
+        
         private void InitTileObject()
         {
-            switch (TileType)
-            {
-                case TileType.Small:
-                    _tileObject = gameObject.AddComponent<SmallTileObject>();
-                    break;
-                case TileType.Big:
-                    _tileObject = gameObject.AddComponent<BigTileObject>();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            _tileObject = gameObject.AddComponent<TileObject>();
         }
 
         private void InitHandleHoverEvents()
@@ -91,9 +78,6 @@ namespace PlanetExpress.Scripts
                     }
                     case PlacedResult.NotEmpty:
                         Debug.LogError("Can't place this ShopItem here. The slot is not empty!");
-                        break;
-                    case PlacedResult.TypeMismatch:
-                        Debug.LogError("Can't place this ShopItem here. The type is mismatched!");
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

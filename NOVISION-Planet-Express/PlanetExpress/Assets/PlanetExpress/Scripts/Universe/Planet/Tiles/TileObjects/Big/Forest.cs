@@ -2,7 +2,7 @@
 
 namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Big
 {
-    public class Forest : BigTileObject
+    public class Forest : TileObject
     {
     }
 }
