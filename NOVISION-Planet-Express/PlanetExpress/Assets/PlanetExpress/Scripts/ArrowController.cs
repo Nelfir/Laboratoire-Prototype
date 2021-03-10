@@ -8,38 +8,26 @@ namespace PlanetExpress.Scripts
     [DefaultExecutionOrder(-999)]
     public class ArrowController : MonoBehaviour
     {
-        public TileSlot TileSlot;
-        public TileType TileType;
+        [HideInInspector] public TileSlot TileSlot;
 
-        public OriginPointCreator OriginPointCreator;
+        [HideInInspector] public OriginPointCreator OriginPointCreator;
 
         // Start is called before the first frame update
         void Start()
         {
             OriginPointCreator = GetComponent<OriginPointCreator>();
 
-            PlaceArrowAtOriginAndRotation(GetNormalFaceRotation());
+            PlaceArrowAtOriginAndRotation(GetArrowUpRotation());
             CreateTileSlotComponentOnParent();
+
             Hide();
             SetOriginPointIsVisible(false);
         }
 
         private void CreateTileSlotComponentOnParent()
         {
-            switch (TileType)
-            {
-                case TileType.Big:
-                    TileSlot = gameObject.transform.parent.gameObject.AddComponent<BigTileSlot>();
-                    TileSlot.SetArrowController(this);
-                    break;
-                case TileType.Small:
-                    TileSlot = gameObject.transform.parent.gameObject.AddComponent<SmallTileSlot>();
-                    TileSlot.SetArrowController(this);
-                    break;
-                default:
-                    Debug.Log("[ArrowController] Unknown TileType!");
-                    break;
-            }
+            TileSlot = gameObject.transform.parent.gameObject.AddComponent<BigTileSlot>();
+            TileSlot.SetArrowController(this);
         }
 
         public void Hide()
@@ -53,20 +41,22 @@ namespace PlanetExpress.Scripts
             OriginPointCreator.Origin.SetActive(isOriginPointVisible);
         }
 
-        private Quaternion GetNormalFaceRotation()
+        private Quaternion GetArrowUpRotation()
         {
-            return GetComponent<RaytracingNormalFinder>().FindNormalRotation();
+            return GetComponent<RaytracingNormalFinder>().FindNormalUp();
         }
 
         // Places the arrow facing the origin with the correct rotation
-        private void PlaceArrowAtOriginAndRotation(Quaternion rotation)
+        private void PlaceArrowAtOriginAndRotation(Quaternion arrowFacingUp)
         {
-            OriginPointCreator.SetRotation(rotation);
+            OriginPointCreator.SetRotation(arrowFacingUp);
 
             transform.localPosition = new Vector3(0, 0, 0);
             transform.parent.SetParent(OriginPointCreator.transform, false);
             transform.position += transform.up * -10;
             transform.up = OriginPointCreator.transform.up;
+
+            //transform.rotation = shapeRotation;
         }
     }
 }

@@ -60,36 +60,11 @@ namespace PlanetExpress.Scripts
 
             Debug.Log("[PlanetController] Found " + r.Length + " faces.");
 
-            int SmallCount = 0;
-            int BigCount = 0;
-            int UnknownCount = 0;
-
-            foreach (ArrowController arrowController in r)
-            {
-                switch (arrowController.TileType)
-                {
-                    case TileType.Big:
-                        BigCount++;
-                        break;
-                    case TileType.Small:
-                        SmallCount++;
-                        break;
-                    default:
-                        UnknownCount++;
-                        Debug.LogError("[PlanetController] Unknown tile type for arrow controller!");
-                        break;
-                }
-
-                // Register the TileSlot in the PlanetController
+            foreach (ArrowController arrowController in r) 
                 TileSlots.Add(arrowController.TileSlot);
-            }
-
 
             Debug.Log(
-                "[PlanetController] Found " + BigCount + " big faces, " +
-                SmallCount + " small faces and " +
-                UnknownCount + " unknown faces for a total of " +
-                r.Length + " faces.");
+                "[PlanetController] Found " + r.Length + " faces.");
         }
     }
 }
