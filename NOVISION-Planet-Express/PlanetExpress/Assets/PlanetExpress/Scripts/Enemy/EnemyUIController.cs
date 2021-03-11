@@ -9,11 +9,11 @@ namespace PlanetExpress.Scripts.Enemy
         public TextMeshProUGUI TextLevel;
         public TextMeshProUGUI TextName;
 
-        public Slider HealthSlider;
+        public HealthUI HealthSlider;
 
         public void UpdateHealth(int currentHealth, int maxHealth)
         {
-            HealthSlider.value = currentHealth / (float) maxHealth;
+            HealthSlider.UpdateHealth(currentHealth, maxHealth);
         }
     }
 }
