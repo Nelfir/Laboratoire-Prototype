@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8349668446293272060}
   - component: {fileID: 4931477480240720473}
   - component: {fileID: 7175597506490195603}
+  - component: {fileID: 7265351629241042891}
   m_Layer: 0
   m_Name: VilleViking_1
   m_TagString: Untagged
@@ -85,3 +86,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7265351629241042891
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688617522589171526}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3711805079370105819, guid: 16c375fe8f6783940b6699b4de0982f5, type: 3}

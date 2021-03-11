@@ -19,7 +19,7 @@ namespace PlanetExpress.Scripts.Utils.NormalFinder
             CreateTileSlotComponentOnParent();
 
             Hide();
-            SetOriginPointIsVisible(false);
+            SetStatus(TileSelectionStatus.Hidden);
         }
 
         private void CreateTileSlotComponentOnParent()
@@ -34,9 +34,14 @@ namespace PlanetExpress.Scripts.Utils.NormalFinder
             r.enabled = false;
         }
 
-        public void SetOriginPointIsVisible(bool isOriginPointVisible)
+        public void SetStatus(TileSelectionStatus status)
         {
-            OriginPointCreator.Origin.SetActive(isOriginPointVisible);
+            OriginPointCreator.Origin.GetComponent<TileSelection>().SetStatus(status);
+        }
+
+        public void SetHasTileInSlot(bool hasTileInSlot)
+        {
+            OriginPointCreator.Origin.GetComponent<TileSelection>().SetHasTileInSlot(hasTileInSlot);
         }
 
         private Quaternion GetArrowUpRotation()

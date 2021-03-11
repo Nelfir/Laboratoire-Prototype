@@ -13,6 +13,8 @@ namespace PlanetExpress.Scripts.Utils.NormalFinder
 
         private GameObject _prefabSphereRotation;
 
+        public Transform TileOriginTransform;
+
         // Start is called before the first frame update
         void Awake()
         {
@@ -22,18 +24,17 @@ namespace PlanetExpress.Scripts.Utils.NormalFinder
             Origin.transform.localScale = new Vector3(10, 10, 10);
             Origin.transform.position = Vector3.zero;
             Origin.transform.SetParent(transform.parent, false);
-            
-            Debug.Log("Rot : " + RotationOffset);
         }
 
         public void SetRotation(Quaternion rotation)
         {
             Origin.transform.rotation = rotation;
-            
             Origin.transform.eulerAngles -= new Vector3(90, 0, 0);
-            
+
             GameObject tuileVide = Origin.GetComponentInChildren<TuileVideOriginale>().gameObject;
             tuileVide.transform.Rotate(new Vector3(0, RotationOffset, 0));
+
+            TileOriginTransform = tuileVide.transform;
         }
     }
 }

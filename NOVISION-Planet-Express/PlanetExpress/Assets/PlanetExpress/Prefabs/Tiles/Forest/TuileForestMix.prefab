@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4437268664920893843}
   - component: {fileID: 737327833648195126}
   - component: {fileID: 3305488796116259580}
+  - component: {fileID: -3484727286825769184}
   m_Layer: 0
   m_Name: TuileForestMix
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-3484727286825769184
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3954029612880933673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -162096910672965380, guid: 3a8d97f61027e4944baf3ea62123d2a8, type: 3}

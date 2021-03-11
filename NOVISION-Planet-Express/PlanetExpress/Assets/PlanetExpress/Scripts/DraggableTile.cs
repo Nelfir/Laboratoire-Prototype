@@ -9,6 +9,7 @@ using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using PlanetExpress.Scripts.Utils.VR;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
+using Valve.VR.InteractionSystem.Sample;
 
 namespace PlanetExpress.Scripts
 {
@@ -16,13 +17,13 @@ namespace PlanetExpress.Scripts
     {
         private TileObject _tileObject;
         private bool _isCurrentlyAttachedToHand;
-        
+
         public void Start()
         {
             InitTileObject();
             InitHandleHoverEvents();
         }
-        
+
         private void InitTileObject()
         {
             _tileObject = gameObject.AddComponent<TileObject>();
@@ -44,45 +45,40 @@ namespace PlanetExpress.Scripts
                 Debug.Log("Object " + name + " was detached from hand.");
                 _isCurrentlyAttachedToHand = false;
 
-                PlacedResult placedResult = PlanetController.Instance.CanBePlaced(_tileObject, nearestTileSlot);
+                bool isReplacing = false;
 
-                switch (placedResult)
+                // Hide the selection
+                if (nearestTileSlot != null)
                 {
-                    case PlacedResult.OK:
-                    {
-                        Debug.Log("Placing tile here...");
-
-
-                        ShopItem shopItem = GetComponent<ShopItem>();
-
-                        if (shopItem)
-                        {
-                            Debug.Log("Is shop item! Cost : " + shopItem.Cost);
-
-                            if (CurrencyController.Instance.Money < shopItem.Cost)
-                            {
-                                Debug.LogError("Not enough gold!");
-                                return;
-                            }
-
-                            CurrencyController.Instance.UpdateMoney(-shopItem.Cost);
-
-                            // Destroy the Shop Item so other instances dont cost as much
-                            Destroy(shopItem);
-                        }
-
-                        LockToPointOrigin lockToPointOrigin = GetComponent<LockToPointOrigin>();
-                        lockToPointOrigin.snapTo = nearestTileSlot.ArrowController.OriginPointCreator.Origin.transform;
-
-                        break;
-                    }
-                    case PlacedResult.NotEmpty:
-                        Debug.LogError("Can't place this ShopItem here. The slot is not empty!");
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    nearestTileSlot.ArrowController.SetStatus(TileSelectionStatus.Hidden);
                 }
+
+                Debug.Log("Placing tile here...");
+
+                HandleShopItem(GetComponent<ShopItem>());
+
+                // Calculate the new position
+               PlanetController.Instance.Place(_tileObject, nearestTileSlot);
             });
+        }
+
+        private void HandleShopItem(ShopItem shopItem)
+        {
+            if (shopItem)
+            {
+                Debug.Log("Is shop item! Cost : " + shopItem.Cost);
+
+                if (CurrencyController.Instance.Money < shopItem.Cost)
+                {
+                    Debug.LogError("Not enough gold!");
+                    return;
+                }
+
+                CurrencyController.Instance.UpdateMoney(-shopItem.Cost);
+
+                // Destroy the Shop Item so other instances dont cost as much
+                Destroy(shopItem);
+            }
         }
 
         private TileSlot nearestTileSlot;
@@ -91,36 +87,34 @@ namespace PlanetExpress.Scripts
         {
             if (_isCurrentlyAttachedToHand)
             {
-                var nearestSlot = PlanetController.Instance.GetNearestPlaceableTileSlots(_tileObject, true);
-
-                Debug.Log("There is " + nearestSlot.Count + " possible slot(s).");
-
-                var newNearestTileSlot = nearestSlot.FirstOrDefault();
-
-                if (newNearestTileSlot == null)
-                {
-                    Debug.Log("Null nearest slot.");
-                    return;
-                }
+                var nearestSlot = PlanetController.Instance.GetNearestTileSlot(_tileObject);
 
                 if (nearestTileSlot == null)
                 {
-                    nearestTileSlot = newNearestTileSlot;
-                    nearestTileSlot.SetArrowVisible(true);
+                    nearestTileSlot = nearestSlot;
                 }
+
+                var isEmpty = PlanetController.Instance.IsEmpty(nearestSlot);
+
+                nearestTileSlot.ArrowController.SetStatus(TileSelectionStatus.Hidden);
+                nearestTileSlot = nearestSlot;
+
+                if (isEmpty)
+                    nearestTileSlot.ArrowController.SetStatus(TileSelectionStatus.Okay);
                 else
                 {
-                    nearestTileSlot.SetArrowVisible(false);
-                    nearestTileSlot = newNearestTileSlot;
-                    nearestTileSlot.SetArrowVisible(true);
-                }
-            }
-            else
-            {
-                if (nearestTileSlot != null)
-                {
-                    nearestTileSlot.SetArrowVisible(false);
-                    nearestTileSlot = null;
+                    if (_tileObject == null)
+                    {
+                        // Can't replace, this tile is not coming from another tile!
+                        // Probably from the Shop.
+
+                        nearestTileSlot.ArrowController.SetStatus(TileSelectionStatus.Error);
+                    }
+                    else
+                    {
+                        // Will replace
+                        nearestTileSlot.ArrowController.SetStatus(TileSelectionStatus.Replacing);
+                    }
                 }
             }
         }

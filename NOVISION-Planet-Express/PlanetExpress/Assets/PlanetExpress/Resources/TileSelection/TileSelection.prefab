@@ -161,7 +161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Okay: {fileID: 2100000, guid: eb01e44d4402d084093622fc9632a3a3, type: 2}
   Error: {fileID: 2100000, guid: e70177776b3a9f24d8c53e3a7f3742d3, type: 2}
-  Arrow: {fileID: 0}
+  Replacing: {fileID: 2100000, guid: 18e8dae01c1621641b4040dbc459a418, type: 2}
+  Arrow: {fileID: 5948874248019902147}
   Corner: {fileID: 6844054674402089489}
 --- !u!1001 &6539516515107227964
 PrefabInstance:
@@ -237,6 +238,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: eb01e44d4402d084093622fc9632a3a3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54e30e35c04a8d244862ef5147b3e395, type: 3}
+--- !u!1 &5948874248019902147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 598875410498172927, guid: 54e30e35c04a8d244862ef5147b3e395,
+    type: 3}
+  m_PrefabInstance: {fileID: 6539516515107227964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6468705291826472057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 217424781484879173, guid: 54e30e35c04a8d244862ef5147b3e395,

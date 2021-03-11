@@ -5,15 +5,10 @@ using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using PlanetExpress.Scripts.Utils.NormalFinder;
 using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
 using UnityEngine;
+using Valve.VR.InteractionSystem.Sample;
 
 namespace PlanetExpress.Scripts.Planet
 {
-    public enum PlacedResult
-    {
-        OK, // Can be placed
-        NotEmpty // Slot is not empty
-    }
-
     /// <summary>
     /// The PlanetController handles the init logic of the tiles and placing and removing tiles from its surface.
     /// </summary>
@@ -24,26 +19,35 @@ namespace PlanetExpress.Scripts.Planet
         /// <summary>
         /// Returns the nearest placeable TileSlot from the given TileObject's position.
         /// </summary>
-        public List<TileSlot> GetNearestPlaceableTileSlots(TileObject tileObject, bool onlyPlaceable)
+        public TileSlot GetNearestTileSlot(TileObject tileObject)
         {
-            return TileSlots
-                .Where(x => CanBePlaced(tileObject, x) == PlacedResult.OK)
-                .OrderBy(t => (t.gameObject.transform.position - tileObject.transform.position).sqrMagnitude)
-                .ToList();
+            return TileSlots.OrderBy(t => (t.gameObject.transform.position - tileObject.transform.position).sqrMagnitude)
+                .FirstOrDefault();
         }
+
+        /// <summary>
+        /// Returns the nearest placeable TileSlot from the given TileObject's position.
+        /// </summary>
+        /* public List<TileSlot> GetNearestPlaceableTileSlots(TileObject tileObject, bool onlyPlaceable)
+         {
+             return TileSlots
+                 .Where(x => IsEmpty(x))
+                 .OrderBy(t => (t.gameObject.transform.position - tileObject.transform.position).sqrMagnitude)
+                 .ToList();
+         }*/
 
         /// <summary>
         /// Returns true if the slot type match and the slot is empty.
         /// </summary>
-        public PlacedResult CanBePlaced(TileObject tileObject, TileSlot tileSlot, bool printDebug = true)
+        public bool IsEmpty(TileSlot tileSlot, bool printDebug = true)
         {
             // Slot is not empty
             if (!tileSlot.IsEmpty)
             {
-                return PlacedResult.NotEmpty;
+                return false;
             }
 
-            return PlacedResult.OK;
+            return true;
         }
 
         public void Start()
@@ -52,11 +56,58 @@ namespace PlanetExpress.Scripts.Planet
 
             Debug.Log("[PlanetController] Found " + r.Length + " faces.");
 
-            foreach (ArrowController arrowController in r) 
+            foreach (ArrowController arrowController in r)
                 TileSlots.Add(arrowController.TileSlot);
 
             Debug.Log(
                 "[PlanetController] Found " + r.Length + " faces.");
+        }
+
+        public void Place(TileObject obj, TileSlot slot)
+        {
+            //
+
+            if (!IsEmpty(slot))
+            {
+                Debug.Log("Replacing!");
+
+                if (obj.ParentSlot == null)
+                {
+                    Debug.LogError("Can't replace, as this DraggableTile is coming from nowhere!");
+                }
+                else
+                {
+                    Debug.Log("Flipping!");
+
+                    // Flip the script!
+                    Set(slot.ChildObject, obj.ParentSlot);
+                    Set(obj, slot);
+                }
+            }
+            else
+            {
+                Debug.Log("Not replacing! Just setting...");
+                Set(obj, slot);
+            }
+        }
+
+        private void Set(TileObject obj, TileSlot slot)
+        {
+            // Tell the tiles lot it's now empty
+            if (obj.ParentSlot != null)
+            {
+                obj.ParentSlot.SetTile(null);
+                obj.ParentSlot = null;
+            }
+
+            LockToPoint lockToPointOrigin = obj.GetComponent<LockToPoint>();
+            lockToPointOrigin.snapTo = slot.ArrowController.OriginPointCreator.TileOriginTransform.transform;
+
+            obj.ParentSlot = slot;
+            slot.SetTile(obj);
+
+            //
+            slot.ArrowController.SetHasTileInSlot(slot.ChildObject != null);
         }
     }
 }
