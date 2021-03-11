@@ -97,6 +97,7 @@ namespace PlanetExpress.Scripts.Planet
             if (obj.ParentSlot != null)
             {
                 obj.ParentSlot.SetTile(null);
+                obj.ParentSlot.ArrowController.SetHasTileInSlot(false);
                 obj.ParentSlot = null;
             }
 
