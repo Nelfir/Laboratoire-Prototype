@@ -14,9 +14,6 @@ public class GrabPoint : MonoBehaviour
 
     private Quaternion originalOffset;
 
-
-    private Vector3 forward;
-    
     public void Start()
     {
         _originalPos = transform.localPosition;
@@ -29,14 +26,7 @@ public class GrabPoint : MonoBehaviour
 
         interactable.onAttachedToHand.AddListener(() =>
         {
-
-            var q = Quaternion.LookRotation(PlanetController.Instance.transform.position - transform.position);
-            
-            originalOffset = new Quaternion(q.x, q.y, q.z, q.w);
-
-
-            forward = PlanetController.Instance.transform.eulerAngles.normalized;
-            
+            originalOffset = PlanetController.Instance.transform.rotation;
             _isFollowing = true;
             Debug.Log("Start following!");
         });
@@ -56,8 +46,8 @@ public class GrabPoint : MonoBehaviour
         {
             // Determine which direction to rotate towards
             
-            var newOffset = Quaternion.LookRotation(PlanetController.Instance.transform.position - transform.position, forward);
-            PlanetController.Instance.transform.rotation = newOffset * originalOffset;
+            var newOffset = Quaternion.LookRotation(PlanetController.Instance.transform.position - transform.position);
+            PlanetController.Instance.transform.rotation = newOffset * Quaternion.Inverse(originalOffset);
         }
     }
 }
