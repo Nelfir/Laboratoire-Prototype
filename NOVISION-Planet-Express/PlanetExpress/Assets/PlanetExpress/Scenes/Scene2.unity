@@ -179,8 +179,7 @@ MonoBehaviour:
   Name: Forest
   ParentSlot: {fileID: 0}
   Level: 0
-  HealthCurrent: 0
-  HealthMax: 0
+  HealthMax: 100
 --- !u!4 &63729636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5774373804318829913, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
@@ -985,8 +984,7 @@ MonoBehaviour:
   Name: Forest
   ParentSlot: {fileID: 0}
   Level: 0
-  HealthCurrent: 0
-  HealthMax: 0
+  HealthMax: 100
 --- !u!4 &1210098249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5774373804318829913, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
@@ -1093,8 +1091,7 @@ MonoBehaviour:
   Name: Village
   ParentSlot: {fileID: 0}
   Level: 0
-  HealthCurrent: 0
-  HealthMax: 0
+  HealthMax: 100
 --- !u!4 &1242428377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5774373804318829913, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
@@ -2062,8 +2059,7 @@ MonoBehaviour:
   Name: Forest
   ParentSlot: {fileID: 0}
   Level: 0
-  HealthCurrent: 0
-  HealthMax: 0
+  HealthMax: 100
 --- !u!4 &661285062695782562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5774373804318829913, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,

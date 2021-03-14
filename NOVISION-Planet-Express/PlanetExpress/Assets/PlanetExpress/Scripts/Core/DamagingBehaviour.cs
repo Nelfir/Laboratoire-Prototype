@@ -6,7 +6,6 @@ namespace PlanetExpress.Scripts.Core
     public class DamagingBehaviour : MonoBehaviour
     {
         [HideInInspector] public Squad Squad;
-
         [HideInInspector] public int Damage;
 
         public void Start()
@@ -24,15 +23,25 @@ namespace PlanetExpress.Scripts.Core
         {
             Debug.Log("Bullet " + name + " collided with " + other.gameObject.name + ".");
 
-            DamageableBehaviour damageable = other.gameObject.GetComponent<DamageableBehaviour>();
+            DamageableBehaviour damageable = other.gameObject.GetComponentInParent<DamageableBehaviour>();
 
             if (damageable)
             {
                 Debug.Log("Is damageable!");
 
-                if (damageable.Squad == Squad)
+
+                if (damageable.Squad != Squad)
                 {
-                    Debug.Log("Is of other squad! " + damageable + " , " + Squad);
+                    Debug.Log("Is of other squad! " + damageable.Squad + " , " + Squad);
+                    
+                    // Destroy bullet game Object
+                    Destroy(gameObject);
+
+                    damageable.Damage(Damage);
+                }
+                else
+                {
+                    Debug.Log("Is of same squad! " + damageable.Squad + " , " + Squad);
                 }
             }
         }

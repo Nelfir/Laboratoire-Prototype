@@ -12,9 +12,6 @@ namespace PlanetExpress.Scripts.Bullets
 
         public void Awake()
         {
-            
- 
-            
             _damagingBehaviour = gameObject.AddComponent<DamagingBehaviour>();
         }
 

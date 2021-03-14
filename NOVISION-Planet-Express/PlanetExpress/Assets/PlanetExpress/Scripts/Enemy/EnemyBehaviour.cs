@@ -39,7 +39,7 @@ namespace PlanetExpress.Scripts.Enemy
         /// <summary>
         /// Health Data
         /// </summary>
-        public int MaxHealth;
+        public int HealthMax;
 
         /// <summary>
         /// Speed
@@ -61,7 +61,7 @@ namespace PlanetExpress.Scripts.Enemy
         public int BulletDamage = 10;
 
 
-        public float BulletSpeed = 1;
+        public float BulletSpeed = 5;
 
         /// <summary>
         /// Delay between bullets
@@ -72,19 +72,50 @@ namespace PlanetExpress.Scripts.Enemy
 
         #region Properties
 
-        [HideInInspector] public int CurrentHealth = 0;
+        [HideInInspector] public int HealthCurrent = 0;
         [HideInInspector] public Vector3 TargetPosition;
 
         #endregion
 
+        private EnemyUIController UI;
+
 
         public void Start()
         {
-            CurrentHealth = MaxHealth;
-
+            HealthCurrent = HealthMax;
             UpdateEnemyUI();
+
+            AddDamageableBehaviour();
         }
 
+        private void AddDamageableBehaviour()
+        {
+            DamageableBehaviour d = gameObject.AddComponent<DamageableBehaviour>();
+            d.Init(Squad.Enemy);
+
+            d.OnDamaged.AddListener((amount) =>
+            {
+                // TODO play damaging sound
+
+                HealthCurrent -= amount;
+                UpdateHealthUI();
+
+                CheckIfDead();
+
+                Debug.Log(name + " damaged for " + HealthCurrent + " / " + HealthMax + ".");
+            });
+        }
+        
+        private void CheckIfDead()
+        {
+            if (HealthCurrent <= 0)
+            {
+                Debug.Log("Tile " + name + " was destroyed!");
+                Destroy(gameObject);
+                // TODO play explosion sound
+            }
+        }
+        
 
         public void StartMove(Vector3 movingTargetPos)
         {
@@ -124,13 +155,17 @@ namespace PlanetExpress.Scripts.Enemy
             }
         }
 
-
         private void UpdateEnemyUI()
         {
-            EnemyUIController UI = GetComponentInChildren<EnemyUIController>();
+            UI = GetComponentInChildren<EnemyUIController>();
             UI.TextLevel.text = "Level " + Level;
             UI.TextName.text = Name;
-            UI.UpdateHealth(CurrentHealth, MaxHealth);
+            UpdateHealthUI();
+        }
+
+        private void UpdateHealthUI()
+        {
+            UI.UpdateHealth(HealthCurrent, HealthMax);
         }
     }
 }

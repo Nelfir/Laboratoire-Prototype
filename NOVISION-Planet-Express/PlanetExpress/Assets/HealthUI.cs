@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     public Image ImageCurrent;
-    public Image ImageMax;
 
     private int _currentHealth;
     private int _maxHealth;
