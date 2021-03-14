@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
@@ -23,10 +20,17 @@ public class HealthUI : MonoBehaviour
     private void UpdateUI()
     {
         var localScale = ImageCurrent.rectTransform.localScale;
-
-        ImageCurrent.rectTransform.localScale = new Vector3(
-            _currentHealth / (float) _maxHealth,
-            localScale.y,
-            localScale.z);
+        
+        if (_maxHealth == 0)
+        {
+            Debug.LogError("Max health is 0! You know what this means ;) Can't divide by 0 ya dingus!");
+        }
+        else
+        {
+            ImageCurrent.rectTransform.localScale = new Vector3(
+                _currentHealth / (float) _maxHealth,
+                localScale.y,
+                localScale.z);
+        }
     }
 }

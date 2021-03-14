@@ -1,5 +1,4 @@
-﻿using System;
-using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
+﻿using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
 
 namespace PlanetExpress.Scripts.Currency
 {

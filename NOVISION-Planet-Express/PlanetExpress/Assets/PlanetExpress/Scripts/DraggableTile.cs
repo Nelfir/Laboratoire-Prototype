@@ -1,15 +1,10 @@
-﻿using System;
-using System.Linq;
-using PlanetExpress.Scripts.Currency;
+﻿using PlanetExpress.Scripts.Currency;
 using PlanetExpress.Scripts.Planet;
 using PlanetExpress.Scripts.Shop;
-using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
-using PlanetExpress.Scripts.Utils.VR;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
-using Valve.VR.InteractionSystem.Sample;
 
 namespace PlanetExpress.Scripts
 {
@@ -26,7 +21,9 @@ namespace PlanetExpress.Scripts
 
         private void InitTileObject()
         {
-            _tileObject = gameObject.AddComponent<TileObject>();
+            _tileObject = gameObject.GetComponent<TileObject>();
+            
+            if (_tileObject == null) Debug.LogError("Null tile object!");
         }
 
         private void InitHandleHoverEvents()
@@ -58,7 +55,7 @@ namespace PlanetExpress.Scripts
                 HandleShopItem(GetComponent<ShopItem>());
 
                 // Calculate the new position
-               PlanetController.Instance.Place(_tileObject, nearestTileSlot);
+                PlanetController.Instance.Place(_tileObject, nearestTileSlot);
             });
         }
 

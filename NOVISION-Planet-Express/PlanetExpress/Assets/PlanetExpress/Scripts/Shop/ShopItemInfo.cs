@@ -1,6 +1,4 @@
-﻿using System;
-using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts.Shop

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using PlanetExpress.Scripts.Planet;
+﻿using PlanetExpress.Scripts.Planet;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 

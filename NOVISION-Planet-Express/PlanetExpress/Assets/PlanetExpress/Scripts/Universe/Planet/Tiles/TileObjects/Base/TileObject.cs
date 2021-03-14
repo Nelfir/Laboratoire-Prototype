@@ -1,5 +1,7 @@
-﻿using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
+﻿using System;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
+using UnityEngine;
 
 namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
 {
@@ -8,6 +10,30 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
     /// </summary>
     public class TileObject : Tile
     {
-        public TileSlot ParentSlot;
+        public string Name;
+
+        [HideInInspector] public TileSlot ParentSlot;
+
+        [HideInInspector] public int Level;
+
+        [HideInInspector] public int HealthCurrent;
+        [HideInInspector] public int HealthMax;
+
+        private CanvasTile _canvasTile;
+
+        // [HideInInspector]
+
+        public void Start()
+        {
+            _canvasTile = GetComponentInChildren<CanvasTile>();
+            UpdateUI();
+        }
+
+        public void UpdateUI()
+        {
+            _canvasTile.UpdateName(Name);
+            _canvasTile.UpdateLevel(Level);
+            _canvasTile.UpdateHealth(HealthCurrent, HealthMax);
+        }
     }
 }

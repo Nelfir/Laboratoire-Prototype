@@ -1,12 +1,4 @@
-﻿using System;
-using System.Linq;
-using PlanetExpress.Scripts.Currency;
-using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
-using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
-using PlanetExpress.Scripts.Utils.VR;
-using UnityEditor;
-using UnityEngine;
-using Valve.VR.InteractionSystem;
+﻿using UnityEngine;
 
 namespace PlanetExpress.Scripts.Shop
 {

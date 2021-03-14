@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Valve.VR.InteractionSystem;
-using Object = UnityEngine.Object;
+﻿using UnityEngine;
 
 public class GrabRotatePoint : MonoBehaviour
 {
