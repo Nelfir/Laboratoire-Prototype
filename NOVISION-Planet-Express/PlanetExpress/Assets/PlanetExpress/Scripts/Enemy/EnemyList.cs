@@ -1,27 +1,29 @@
-﻿using UnityEngine;
+﻿using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
+using UnityEngine;
 
 namespace PlanetExpress.Scripts.Enemy
 {
-    
     [DefaultExecutionOrder(-999)]
-    public class EnemyList : MonoBehaviour
+    public class EnemyList : Singleton<EnemyList>
     {
         private const string prefix = "Space Ship/";
 
-        public static GameObject NormalRocket;
-        public static GameObject NormalMachineGun;
+        public  GameObject NormalRocket;
+        public  GameObject NormalMachineGun;
 
-        public static GameObject FragileSpeedsterRocket;
-        public static GameObject FragileSpeedsterMachineGun;
+        public  GameObject FragileSpeedsterRocket;
+        public  GameObject FragileSpeedsterMachineGun;
 
-        public static GameObject MightyGlacierRocket;
-        public static GameObject MightyGlacierMachineGun;
+        public  GameObject MightyGlacierRocket;
+        public  GameObject MightyGlacierMachineGun;
 
-        public static GameObject HybridRocket;
-        public static GameObject HybridMachineGun;
+        public  GameObject HybridRocket;
+        public  GameObject HybridMachineGun;
 
-        public void Awake()
+        public new void Awake()
         {
+            base.Awake();
+            
             NormalRocket = Resources.Load<GameObject>(prefix + "Normal (Rocket)");
             NormalMachineGun = Resources.Load<GameObject>(prefix + "Normal (Machine Gun)");
 

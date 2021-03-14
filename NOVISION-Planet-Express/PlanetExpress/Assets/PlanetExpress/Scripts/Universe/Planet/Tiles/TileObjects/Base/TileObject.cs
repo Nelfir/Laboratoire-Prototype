@@ -1,4 +1,5 @@
 ﻿using System;
+using PlanetExpress.Scripts.Core;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using UnityEngine;
@@ -27,12 +28,30 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
         {
             _canvasTile = GetComponentInChildren<CanvasTile>();
             UpdateUI();
+
+            AddDamageableComponent();
+        }
+
+        private void AddDamageableComponent()
+        {
+            DamageableBehaviour d = gameObject.AddComponent<DamageableBehaviour>();
+            
+            d.OnDamaged.AddListener((amount) =>
+            {
+                HealthCurrent -= amount;
+                UpdateHealthUI();
+            });
         }
 
         public void UpdateUI()
         {
             _canvasTile.UpdateName(Name);
             _canvasTile.UpdateLevel(Level);
+            UpdateHealthUI();
+        }
+
+        public void UpdateHealthUI()
+        {
             _canvasTile.UpdateHealth(HealthCurrent, HealthMax);
         }
     }

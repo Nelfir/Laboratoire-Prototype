@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System;
+using PlanetExpress.Scripts.Utils;
+using TMPro;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts.Enemy
@@ -9,6 +11,11 @@ namespace PlanetExpress.Scripts.Enemy
         public TextMeshProUGUI TextName;
 
         public HealthUI HealthSlider;
+
+        public void Start()
+        {
+            gameObject.AddComponent<CameraFacingBillboard>();
+        }
 
         public void UpdateHealth(int currentHealth, int maxHealth)
         {

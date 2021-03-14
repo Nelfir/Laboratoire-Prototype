@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using PlanetExpress.Scripts.Utils;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class CanvasTile : MonoBehaviour
     void Start()
     {
         _healthUI = GetComponentInChildren<HealthUI>();
+        gameObject.AddComponent<CameraFacingBillboard>();
     }
 
     public void UpdateName(string _name)

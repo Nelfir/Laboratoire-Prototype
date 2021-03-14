@@ -679,7 +679,7 @@ PrefabInstance:
     - target: {fileID: 6606143636186989777, guid: 4ab79aca7583d6441830820667f6fcc5,
         type: 3}
       propertyPath: m_Convex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8236846081955781293, guid: 4ab79aca7583d6441830820667f6fcc5,
         type: 3}
@@ -1003,7 +1003,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1216005036}
   - component: {fileID: 1216005037}
-  - component: {fileID: 1216005038}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1035,18 +1034,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d468f03ef2b0005429717eabec8f6eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1216005038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216005035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1431d11b98a457bb687857bb320fc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1242428369 stripped

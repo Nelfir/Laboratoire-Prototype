@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using PlanetExpress.Scripts.Planet;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -71,33 +72,33 @@ namespace PlanetExpress.Scripts.Enemy
             {
                 1, new Wave(1, "First Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyList.NormalRocket, 3)
+                        .Add(EnemyList.Instance.NormalRocket, 10)
                 )
             },
             {
                 2, new Wave(2, "Second Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyList.NormalRocket, 5)
+                        .Add(EnemyList.Instance.NormalRocket, 5)
                 )
             },
             {
                 3, new Wave(3, "Third Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyList.NormalMachineGun, 2)
+                        .Add(EnemyList.Instance.NormalMachineGun, 2)
                 )
             },
             {
                 4, new Wave(4, "Fourth Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyList.NormalRocket, 10)
+                        .Add(EnemyList.Instance.NormalRocket, 10)
                 )
             },
             {
                 5, new Wave(5, "Fifth Wave", 60,
                     new WaveSpawnDetails()
-                        .Add(EnemyList.NormalRocket, 3)
-                        .Add(EnemyList.NormalMachineGun, 2)
-                        .Add(EnemyList.MightyGlacierRocket)
+                        .Add(EnemyList.Instance.NormalRocket, 3)
+                        .Add(EnemyList.Instance.NormalMachineGun, 2)
+                        .Add(EnemyList.Instance.MightyGlacierRocket)
                 )
             },
             // End wave
@@ -172,7 +173,33 @@ namespace PlanetExpress.Scripts.Enemy
 
                 Debug.Log("Spawning : " + nextEnemy.name);
                 GameObject g = Instantiate(nextEnemy);
-                g.transform.position = GetNextEnemyPosition();
+
+
+                Vector3 TileToAttack = PlanetController.Instance.GetNextEnemyTargetTile();
+
+                if (TileToAttack == Vector3.negativeInfinity)
+                {
+                    yield break;
+                }
+
+
+                // vector pointing from the planet to the player
+                Vector3 difference = TileToAttack - PlanetController.Instance.transform.position;
+
+                // the direction of the launch, normalized
+                Vector3 directionOnly = difference.normalized;
+
+                // the point along this vector you are requesting
+                Vector3 startPos = PlanetController.Instance.transform.position + directionOnly * 10 + Random.insideUnitSphere * 2;
+
+                //Randomize this point a little bit
+                var endPos = (PlanetController.Instance.transform.position + directionOnly * 2);
+
+                g.transform.position = startPos;
+                
+                EnemyBehaviour enemyBehaviour = g.GetComponent<EnemyBehaviour>();
+                enemyBehaviour.GetComponent<EnemyBehaviour>().StartMove(endPos);
+                enemyBehaviour.GetComponent<EnemyBehaviour>().StartShooting(TileToAttack);
 
                 /* Debug.Log("Waiting for " + Waves.CurrentWave.EnemySpawnDelay + " seconds (...");
                  yield return new WaitForSeconds(Waves.CurrentWave.EnemySpawnDelay);*/
@@ -183,6 +210,7 @@ namespace PlanetExpress.Scripts.Enemy
 
             NextWave();
         }
+
 
         private Vector3 GetNextEnemyPosition()
         {

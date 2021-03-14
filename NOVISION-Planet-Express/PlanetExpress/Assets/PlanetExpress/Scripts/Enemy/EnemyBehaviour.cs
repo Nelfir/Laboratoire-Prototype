@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using PlanetExpress.Scripts.Bullets;
+using PlanetExpress.Scripts.Core;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts.Enemy
@@ -44,7 +46,6 @@ namespace PlanetExpress.Scripts.Enemy
         /// </summary>
         public float Speed = 1;
 
-
         /// <summary>
         /// The level (damage multiplier of the enemy)
         /// </summary>
@@ -57,7 +58,10 @@ namespace PlanetExpress.Scripts.Enemy
 
         public GameObject BulletPrefab;
 
-        public float BulletDamage = 10;
+        public int BulletDamage = 10;
+
+
+        public float BulletSpeed = 1;
 
         /// <summary>
         /// Delay between bullets
@@ -73,24 +77,36 @@ namespace PlanetExpress.Scripts.Enemy
 
         #endregion
 
+
         public void Start()
         {
-            //TODO debug
-            TargetPosition = new Vector3(0, 0, 0);
-
             CurrentHealth = MaxHealth;
-        
+
             UpdateEnemyUI();
-            StartMove(TargetPosition);
+        }
+
+
+        public void StartMove(Vector3 movingTargetPos)
+        {
+            TargetPosition = movingTargetPos;
+
+            EnemyMover enemyMover = gameObject.AddComponent<EnemyMover>();
+            enemyMover.TargetPosition = movingTargetPos;
+        }
+
+
+        public void StartShooting(Vector3 shootingTargetPos)
+        {
+            ShootingTargetPos = shootingTargetPos;
             StartCoroutine(nameof(StartShootingLoop));
         }
+
+        private Vector3 ShootingTargetPos;
 
         private IEnumerator StartShootingLoop()
         {
             yield return new WaitForSeconds(BulletDelay);
-
             SpawnBullets();
-
             StartCoroutine(nameof(StartShootingLoop));
         }
 
@@ -102,15 +118,12 @@ namespace PlanetExpress.Scripts.Enemy
 
                 GameObject bullet = Instantiate(BulletPrefab);
                 bullet.transform.position = position;
-                bullet.transform.rotation = Quaternion.LookRotation(TargetPosition - bullet.transform.position);
+                bullet.transform.rotation = Quaternion.LookRotation(ShootingTargetPos - bullet.transform.position);
+
+                bullet.GetComponent<BulletBehaviour>().SetProperties(BulletDamage, BulletSpeed, Squad.Enemy);
             }
         }
 
-        private void StartMove(Vector3 targetPos)
-        {
-            EnemyMover enemyMover = gameObject.AddComponent<EnemyMover>();
-            enemyMover.TargetPosition = targetPos;
-        }
 
         private void UpdateEnemyUI()
         {

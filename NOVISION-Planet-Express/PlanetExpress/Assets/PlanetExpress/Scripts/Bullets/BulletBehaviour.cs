@@ -1,39 +1,33 @@
-﻿using PlanetExpress.Scripts.Core;
+﻿using System;
+using PlanetExpress.Scripts.Core;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts.Bullets
 {
     public class BulletBehaviour : MonoBehaviour
     {
-        private Squad _squad;
-        private float _speed = 5;
-        private float _bulletDamage;
+        private float _speed = 1;
 
-        public void SetProperties(float _damage, float _speed, Squad _squad)
+        private DamagingBehaviour _damagingBehaviour;
+
+        public void Awake()
         {
-            _bulletDamage = _damage;
-            this._speed = _speed;
-            this._squad = _squad;
+            
+ 
+            
+            _damagingBehaviour = gameObject.AddComponent<DamagingBehaviour>();
+        }
+
+        public void SetProperties(int damage, float speed, Squad squad)
+        {
+            _speed = speed;
+            _damagingBehaviour.Squad = squad;
+            _damagingBehaviour.Damage = damage;
         }
 
         private void FixedUpdate()
         {
             transform.position += transform.forward * Time.fixedDeltaTime * _speed;
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            Debug.Log("Bullet " + name + " collided with " + other.gameObject.name + ".");
-        
-            DamageableBehaviour damageable = other.gameObject.GetComponent<DamageableBehaviour>();
-
-            if (damageable)
-            {
-                if (damageable.Squad == _squad)
-                {
-                
-                }
-            }
         }
     }
 }

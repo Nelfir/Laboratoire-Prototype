@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be9326f97d76664aa14abbd3875a728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
 --- !u!1001 &4747961508339618903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,6 +51,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4747961509672775489}
     m_Modifications:
+    - target: {fileID: 3578341780670620842, guid: da50e1215c7d73343a9c0d766e260469,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7413639062636816327, guid: da50e1215c7d73343a9c0d766e260469,
         type: 3}
       propertyPath: m_Name

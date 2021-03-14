@@ -2,6 +2,7 @@
 using System.Linq;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
+using PlanetExpress.Scripts.Utils;
 using PlanetExpress.Scripts.Utils.NormalFinder;
 using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
 using UnityEngine;
@@ -109,6 +110,31 @@ namespace PlanetExpress.Scripts.Planet
 
             //
             slot.ArrowController.SetHasTileInSlot(slot.ChildObject != null);
+        }
+
+        /// <summary>
+        /// Returns the next Tile the enemies will attack.
+        /// </summary>
+        public Vector3 GetNextEnemyTargetTile()
+        {
+            List<TileObject> possibleObjects = new List<TileObject>();
+
+            foreach (TileSlot slot in TileSlots)
+            {
+                if (slot.IsEmpty)
+                    continue;
+
+                TileObject obj = slot.ChildObject;
+                possibleObjects.Add(obj);
+            }
+
+            if (possibleObjects.Count == 0)
+            {
+                Debug.LogError("There is no tiles to be targeted on this planet!");
+                return Vector3.negativeInfinity;
+            }
+
+            return possibleObjects.ToArray().GetRandom().transform.position;
         }
     }
 }
