@@ -10,25 +10,23 @@ namespace PlanetExpress.Scripts.Currency.Base
 
     public class ValueWatcher<T> : Singleton<ValueWatcher<T>>
     {
-        private ValueChangeEvent<T> onValueChangeEvent;
-
         public int Value
         {
             get => Value;
             set
             {
                 Value += value;
-                onChange.Invoke(Value);
+                OnValueChangeEvent.Invoke(Value);
             }
         }
 
-        public ValueChangeEvent<T> onChange;
+        public ValueChangeEvent<T> OnValueChangeEvent;
 
         protected override void Awake()
         {
             base.Awake();
             Value = int.MaxValue;
-            onChange = new ValueChangeEvent<T>();
+            OnValueChangeEvent = new ValueChangeEvent<T>();
         }
     }
 }

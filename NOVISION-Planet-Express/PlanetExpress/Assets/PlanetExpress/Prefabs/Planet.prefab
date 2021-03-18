@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 674585440}
   - component: {fileID: 674585442}
   - component: {fileID: 674585441}
-  - component: {fileID: 674585443}
+  - component: {fileID: 5784271196817733281}
   m_Layer: 5
   m_Name: TextMoney
   m_TagString: Untagged
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &674585443
+--- !u!114 &5784271196817733281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,9 +243,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 674585439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c274dbdf9abe4010b82d1e96e47b2a68, type: 3}
+  m_Script: {fileID: 11500000, guid: edcc379bee3ad2946ab83d460faa3173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrencyText: {fileID: 0}
 --- !u!1 &834391879
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,8 +602,7 @@ GameObject:
   - component: {fileID: 1581459552}
   - component: {fileID: 1581459555}
   - component: {fileID: 1581459554}
-  - component: {fileID: 1581459553}
-  - component: {fileID: 1970721917977867000}
+  - component: {fileID: 2646069834835101484}
   m_Layer: 5
   m_Name: TextPopulation
   m_TagString: Untagged
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1581459553
+--- !u!114 &2646069834835101484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -735,21 +735,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1581459551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c274dbdf9abe4010b82d1e96e47b2a68, type: 3}
+  m_Script: {fileID: 11500000, guid: ecad8ef02fda65b46a111e2a0058bc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1970721917977867000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581459551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325ed78a8b0f60740bcf4ed5f9804670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  CurrencyText: {fileID: 0}
 --- !u!1 &1637989988
 GameObject:
   m_ObjectHideFlags: 0
