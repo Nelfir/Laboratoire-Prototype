@@ -4,18 +4,18 @@ using UnityEngine.Events;
 
 namespace PlanetExpress.Scripts.Currency.Base
 {
-    public class ValueChangeEvent<T> : UnityEvent<int>
+    public class ValueChangeEvent<T> : UnityEvent<T>
     {
     }
 
     public class ValueWatcher<T> : Singleton<ValueWatcher<T>>
     {
-        public int Value
+        public T Value
         {
             get => Value;
             set
             {
-                Value += value;
+                Value = value;
                 OnValueChangeEvent.Invoke(Value);
             }
         }
@@ -25,7 +25,6 @@ namespace PlanetExpress.Scripts.Currency.Base
         protected override void Awake()
         {
             base.Awake();
-            Value = int.MaxValue;
             OnValueChangeEvent = new ValueChangeEvent<T>();
         }
     }
