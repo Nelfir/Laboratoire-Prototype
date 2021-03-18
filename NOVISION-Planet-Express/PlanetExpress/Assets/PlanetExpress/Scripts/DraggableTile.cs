@@ -22,7 +22,7 @@ namespace PlanetExpress.Scripts
         private void InitTileObject()
         {
             _tileObject = gameObject.GetComponent<TileObject>();
-            
+
             if (_tileObject == null) Debug.LogError("Null tile object!");
         }
 
@@ -65,13 +65,13 @@ namespace PlanetExpress.Scripts
             {
                 Debug.Log("Is shop item! Cost : " + shopItem.Cost);
 
-                if (CurrencyController.Instance.Money < shopItem.Cost)
+                if (CurrencyController.Instance.Value < shopItem.Cost)
                 {
                     Debug.LogError("Not enough gold!");
                     return;
                 }
 
-                CurrencyController.Instance.UpdateMoney(-shopItem.Cost);
+                CurrencyController.Instance.Value -= shopItem.Cost;
 
                 // Destroy the Shop Item so other instances dont cost as much
                 Destroy(shopItem);

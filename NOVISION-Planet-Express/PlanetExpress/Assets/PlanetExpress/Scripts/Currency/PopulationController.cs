@@ -2,7 +2,7 @@
 
 namespace PlanetExpress.Scripts.Currency
 {
-    public class CurrencyController : ValueWatcher<int>
+    public class PopulationController : ValueWatcher<int>
     {
     }
 }

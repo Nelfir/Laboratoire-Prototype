@@ -43,7 +43,7 @@ namespace PlanetExpress.Scripts.Utils
                             Debug.LogWarning("Application is quitting, not creating an instance of this Singleton.");
                             return default;
                         }
-
+                        
                         GameObject obj = new GameObject
                         {
                             name = typeof(T).Name
