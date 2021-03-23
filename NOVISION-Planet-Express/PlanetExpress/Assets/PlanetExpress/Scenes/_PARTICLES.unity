@@ -312,20 +312,18 @@ PrefabInstance:
     - target: {fileID: 8195813989291655920, guid: dc2b6eb04b8770044b664793cee354c4,
         type: 3}
       propertyPath: m_RenderMode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8195813989291655920, guid: dc2b6eb04b8770044b664793cee354c4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -3846018093981099296, guid: 40927f87fed7c644fb5e9a111e350ef3,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 8002fb104d1db6f46943eab79ce6e404, type: 2}
     - target: {fileID: 8195813989291655920, guid: dc2b6eb04b8770044b664793cee354c4,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: -3846018093981099296, guid: 40927f87fed7c644fb5e9a111e350ef3,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8518514830791525548, guid: dc2b6eb04b8770044b664793cee354c4,
         type: 3}
       propertyPath: m_RootOrder
