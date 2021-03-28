@@ -1,6 +1,5 @@
 ﻿using PlanetExpress.Scripts.Planet;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 public class GrabPoint : MonoBehaviour
 {
@@ -20,8 +19,13 @@ public class GrabPoint : MonoBehaviour
 
     private void RegisterGrabEvents()
     {
-        InteractableHoverEvents interactable = GetComponent<InteractableHoverEvents>();
+        
+        // TODO INTERACTION SYSTEM
+        
+        /*
+         InteractableHoverEvents interactable = GetComponent<InteractableHoverEvents>();
 
+        
         interactable.onAttachedToHand.AddListener(() =>
         {
             originalOffset = PlanetController.Instance.transform.rotation;
@@ -35,7 +39,7 @@ public class GrabPoint : MonoBehaviour
             Debug.Log("End following!");
             _isFollowing = false;
             transform.localPosition = _originalPos;
-        });
+        });*/
     }
 
     public void Update()

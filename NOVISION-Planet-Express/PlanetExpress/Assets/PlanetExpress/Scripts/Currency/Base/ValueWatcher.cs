@@ -1,5 +1,4 @@
 ﻿using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace PlanetExpress.Scripts.Currency.Base

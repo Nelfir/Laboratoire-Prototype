@@ -1,5 +1,4 @@
-﻿using System;
-using PlanetExpress.Scripts.Utils;
+﻿using PlanetExpress.Scripts.Utils;
 using TMPro;
 using UnityEngine;
 

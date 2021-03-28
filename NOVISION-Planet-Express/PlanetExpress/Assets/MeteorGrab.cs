@@ -2,7 +2,6 @@
 using PlanetExpress.Scripts.Planet;
 using PlanetExpress.Scripts.Shop;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 public class MeteorGrab : MonoBehaviour
 {
@@ -15,13 +14,16 @@ public class MeteorGrab : MonoBehaviour
     private void InitHandleHoverEvents()
     {
         // Register the grab events
-        InteractableHoverEvents interactableHoverEvents = GetComponent<InteractableHoverEvents>();
+       
+        //TODO INTERACT
+        
+        /*InteractableHoverEvents interactableHoverEvents = GetComponent<InteractableHoverEvents>();
 
         interactableHoverEvents.onAttachedToHand.AddListener(() =>
         {
             // TODO play sound
             CurrencyController.Instance.Value += 10;
             Destroy(gameObject);
-        });
+        });*/
     }
 }

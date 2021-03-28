@@ -4,7 +4,6 @@ using PlanetExpress.Scripts.Shop;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 namespace PlanetExpress.Scripts
 {
@@ -29,7 +28,11 @@ namespace PlanetExpress.Scripts
         private void InitHandleHoverEvents()
         {
             // Register the grab events
-            InteractableHoverEvents interactableHoverEvents = GetComponent<InteractableHoverEvents>();
+            
+            
+            // TODO INTERACTION SYSTEM
+            
+            /*InteractableHoverEvents interactableHoverEvents = GetComponent<InteractableHoverEvents>();
 
             interactableHoverEvents.onAttachedToHand.AddListener(() =>
             {
@@ -56,7 +59,7 @@ namespace PlanetExpress.Scripts
 
                 // Calculate the new position
                 PlanetController.Instance.Place(_tileObject, nearestTileSlot);
-            });
+            });*/
         }
 
         private void HandleShopItem(ShopItem shopItem)

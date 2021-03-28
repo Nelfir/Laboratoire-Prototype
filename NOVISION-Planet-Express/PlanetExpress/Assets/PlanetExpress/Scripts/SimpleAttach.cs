@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 namespace PlanetExpress.Scripts
 {
     public class SimpleAttach : MonoBehaviour
     {
+        /*
         private Interactable _interactable;
 
         private void Start()
@@ -44,6 +44,6 @@ namespace PlanetExpress.Scripts
                 hand.DetachObject(gameObject);
                 hand.HoverUnlock(_interactable);
             }
-        }
+        }*/
     }
 }
