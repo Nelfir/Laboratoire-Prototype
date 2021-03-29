@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Hybrid (Machine Gun)
-  MaxHealth: 100
+  HealthMax: 0
   Speed: 1
   Level: 1
   BulletSpawnPoints:
@@ -54,8 +54,9 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4747961509672775488, guid: 7d8ec570e3519ab4997b8b8c14540e7f,
     type: 3}
   BulletDamage: 10
+  BulletSpeed: 5
   BulletDelay: 3
-  CurrentHealth: 0
+  HealthCurrent: 0
   TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &3906730607556434175
 PrefabInstance:
@@ -64,6 +65,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3906730606974106866}
     m_Modifications:
+    - target: {fileID: 2580869856335472007, guid: 50e6885965c622b40bb7548bd5abcc27,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2580869856335472007, guid: 50e6885965c622b40bb7548bd5abcc27,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -81,6 +87,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2580869856335472007, guid: 50e6885965c622b40bb7548bd5abcc27,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580869856335472007, guid: 50e6885965c622b40bb7548bd5abcc27,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -92,16 +103,6 @@ PrefabInstance:
     - target: {fileID: 2580869856335472007, guid: 50e6885965c622b40bb7548bd5abcc27,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580869856335472007, guid: 50e6885965c622b40bb7548bd5abcc27,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580869856335472007, guid: 50e6885965c622b40bb7548bd5abcc27,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2580869856335472007, guid: 50e6885965c622b40bb7548bd5abcc27,

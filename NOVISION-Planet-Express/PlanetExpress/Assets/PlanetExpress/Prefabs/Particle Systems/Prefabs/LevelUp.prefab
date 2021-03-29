@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 8395244917193550504}
   - component: {fileID: 6009228572293160546}
   m_Layer: 0
-  m_Name: ParticleSystemLevelUp
+  m_Name: LevelUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Fragile Speedster (Machine Gun)
-  MaxHealth: 100
+  HealthMax: 0
   Speed: 2
   Level: 1
   BulletSpawnPoints:
@@ -54,8 +54,9 @@ MonoBehaviour:
   BulletPrefab: {fileID: 652106299000229712, guid: 38b4279dd75567c49b8ee5d2a19f33f3,
     type: 3}
   BulletDamage: 10
+  BulletSpeed: 5
   BulletDelay: 3
-  CurrentHealth: 0
+  HealthCurrent: 0
   TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &8489046167040618602
 PrefabInstance:
@@ -76,6 +77,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6634666074114757499, guid: 3cafc46ccd949294faf0481e4bd128d0,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634666074114757499, guid: 3cafc46ccd949294faf0481e4bd128d0,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -91,6 +97,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6634666074114757499, guid: 3cafc46ccd949294faf0481e4bd128d0,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634666074114757499, guid: 3cafc46ccd949294faf0481e4bd128d0,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -102,16 +113,6 @@ PrefabInstance:
     - target: {fileID: 6634666074114757499, guid: 3cafc46ccd949294faf0481e4bd128d0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6634666074114757499, guid: 3cafc46ccd949294faf0481e4bd128d0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6634666074114757499, guid: 3cafc46ccd949294faf0481e4bd128d0,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6634666074114757499, guid: 3cafc46ccd949294faf0481e4bd128d0,

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 165616142}
   - component: {fileID: -936347827317554921}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: OriginFinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c188141a18628924987c1b6b9d1f6289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugRaytracingNormals: 0
 --- !u!114 &165616142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Origin: {fileID: 0}
+  RotationOffset: 0
+  TileOriginTransform: {fileID: 0}
 --- !u!114 &-936347827317554921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf902e2529b4d579aac0101e9842ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TileSlot: {fileID: 0}
+  OriginPointCreator: {fileID: 0}
 --- !u!1001 &2077784892518477531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78,6 +83,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2077784891844101084}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 85824c766f60eb64c883dadb212d40bf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85824c766f60eb64c883dadb212d40bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -95,6 +105,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85824c766f60eb64c883dadb212d40bf,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 85824c766f60eb64c883dadb212d40bf,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 1
       objectReference: {fileID: 0}
@@ -107,16 +122,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85824c766f60eb64c883dadb212d40bf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85824c766f60eb64c883dadb212d40bf,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85824c766f60eb64c883dadb212d40bf,
         type: 3}
