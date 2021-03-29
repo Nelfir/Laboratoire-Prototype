@@ -77,6 +77,10 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
 
         #endregion Callbacks
 
+        
+        public LayoutType Layout = LayoutType.Alpha;
+
+        
         /// <summary>
         /// The InputField that the keyboard uses to show the currently edited text.
         /// If you are using the Keyboard prefab you can ignore this field as it will
@@ -125,7 +129,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// </summary>
         public Image AlphaMailKeys = null;
 
-        private LayoutType m_LastKeyboardLayout = LayoutType.Alpha;
+
 
         /// <summary>
         /// The scale the keyboard should be at its maximum distance.
@@ -334,7 +338,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         protected override void OnDisable()
         {
             base.OnDisable();
-            m_LastKeyboardLayout = LayoutType.Alpha;
             Clear();
         }
 
@@ -407,7 +410,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         {
             ResetClosingTime();
             gameObject.SetActive(true);
-            ActivateSpecificKeyboard(LayoutType.Alpha);
+            ActivateSpecificKeyboard(Layout);
 
             OnPlacement(this, EventArgs.Empty);
 
@@ -658,7 +661,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
 
                 case KeyboardKeyFunc.Function.ABC:
                     {
-                        ActivateSpecificKeyboard(m_LastKeyboardLayout);
+                        ActivateSpecificKeyboard(LayoutType.Alpha);
                         break;
                     }
 
@@ -950,7 +953,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         public void ShowAlphaKeyboard()
         {
             AlphaKeyboard.gameObject.SetActive(true);
-            m_LastKeyboardLayout = LayoutType.Alpha;
         }
 
         /// <summary>
@@ -979,7 +981,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             if (AlphaKeyboard.IsActive())
             {
                 AlphaMailKeys.gameObject.SetActive(true);
-                m_LastKeyboardLayout = LayoutType.Email;
                 return true;
             }
             else
@@ -997,7 +998,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             if (AlphaKeyboard.IsActive())
             {
                 AlphaWebKeys.gameObject.SetActive(true);
-                m_LastKeyboardLayout = LayoutType.URL;
                 return true;
             }
             else
