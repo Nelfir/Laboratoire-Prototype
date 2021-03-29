@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 8acb08cc17315d247a49dd9d12dda870
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hurme Geometric Sans 3
+  fontNames:
+  - Hurme Geometric Sans 3
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e43ea08172ae83642bea9159c9611cc6, type: 3}
+  - {fileID: 12800000, guid: 69ea334473463984da9bf76e03b89226, type: 3}
+  - {fileID: 12800000, guid: e005ef49686ef8b42bd16c1a48cbab18, type: 3}
+  - {fileID: 12800000, guid: 20d3fa69db38b7f4c8c92372e761ff8c, type: 3}
+  - {fileID: 12800000, guid: 87a61ece1889e984ca33e8efd0d02eea, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
