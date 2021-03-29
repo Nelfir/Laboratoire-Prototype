@@ -2283,7 +2283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1404131734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3244,7 +3244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 146120, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22458684, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
       propertyPath: m_Pivot.x
@@ -4526,7 +4526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71995ce77051ab143a796eea5908918c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyboard: {fileID: 0}
+  keyboard: {fileID: 1946279014}
 --- !u!114 &3992625659172267430
 MonoBehaviour:
   m_ObjectHideFlags: 0
