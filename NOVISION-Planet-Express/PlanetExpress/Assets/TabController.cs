@@ -1,20 +1,34 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TabController : MonoBehaviour
+namespace DefaultNamespace
 {
-    public List<Button> Buttons = new List<Button>();
-
-    // Start is called before the first frame update
-    void Start()
+    public class TabController : MonoBehaviour
     {
-    }
+        public string Name;
 
-    // Update is called once per frame
-    void Update()
-    {
+        public TextMeshProUGUI Text;
+        public GameObject TabFocus;
+
+        private readonly Color UnselectedColor = new Color(0.29f, 0.67f, 0.97f);
+        private readonly Color SelectedColor = new Color(1f, 1f, 1f);
+
+        public void SetIsSelected(bool isSelected)
+        {
+            if (isSelected)
+            {
+                Text.color = SelectedColor;
+                TabFocus.SetActive(true);
+                
+               gameObject.SetActive(true);
+            }
+            else
+            {
+                Text.color = UnselectedColor;
+                TabFocus.SetActive(false);
+                
+                gameObject.SetActive(false);
+            }
+        }
     }
 }
