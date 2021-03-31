@@ -8,34 +8,32 @@ using Object = UnityEngine.Object;
 
 public class TabManager : MonoBehaviour
 {
-    public List<Button> Buttons = new List<Button>();
+    [System.Serializable]
+    public class SpellAnimationEntry
+    {
+        public TabController tab;
+        public GameObject panel;
+    }
 
-    public List<TabController> Panels = new List<TabController>();
+    public SpellAnimationEntry[] TabsAndPanels;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if (Buttons.Count != Panels.Count)
+        foreach (SpellAnimationEntry spellAnimationEntry in TabsAndPanels)
         {
-            Debug.LogError("[TabController] There is " + Buttons.Count + " buttons and " + Panels.Count + " panels. \n" +
-                           "The number of buttons and panels should be the same.");
-        }
-
-        for (int i = 0; i < Buttons.Count; i++)
-        {
-            Button b = Buttons[i];
-            int index = i;
-            b.onClick.AddListener(() => { Show(Panels[index]); });
+            spellAnimationEntry.tab.Button.onClick.AddListener(() => { Show(spellAnimationEntry); });
         }
     }
 
-    private void Show(TabController panel)
+    private void Show(SpellAnimationEntry tab)
     {
-        foreach (TabController p in Panels)
+        foreach (var tabs in TabsAndPanels)
         {
             // Hide all but the Panel
-            panel.SetIsSelected(panel == p);
+            tabs.tab.SetIsSelected(tab == tabs);
+            tabs.panel.SetActive(tab == tabs);
         }
     }
 
