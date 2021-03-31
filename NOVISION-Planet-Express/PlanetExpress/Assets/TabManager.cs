@@ -23,7 +23,7 @@ public class TabManager : MonoBehaviour
     {
         foreach (SpellAnimationEntry spellAnimationEntry in TabsAndPanels)
         {
-            spellAnimationEntry.tab.Button.onClick.AddListener(() => { Show(spellAnimationEntry); });
+            spellAnimationEntry.tab.button.onClick.AddListener(() => { Show(spellAnimationEntry); });
         }
     }
 

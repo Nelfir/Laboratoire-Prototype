@@ -12,12 +12,20 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
     [RequireComponent(typeof(TMP_InputField))]
     public class KeyboardTest : MonoBehaviour, IPointerDownHandler
     {
-        [Experimental]
-        [SerializeField] private NonNativeKeyboard keyboard = null;
+        [Experimental] [SerializeField] public NonNativeKeyboard keyboard = null;
+
+        private TMP_InputField _textMeshProUGUI;
+
+        public void Start()
+        {
+            _textMeshProUGUI = GetComponent<TMP_InputField>();
+        }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            keyboard.PresentKeyboard();
+            Debug.Log("Opened " + _textMeshProUGUI.text);
+            
+            keyboard.PresentKeyboard(_textMeshProUGUI.text);
 
             keyboard.OnClosed += DisableKeyboard;
             keyboard.OnTextSubmitted += DisableKeyboard;
@@ -31,6 +39,8 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
 
         private void DisableKeyboard(object sender, EventArgs e)
         {
+            Debug.Log("Closed " + _textMeshProUGUI.text);
+            
             keyboard.OnTextUpdated -= UpdateText;
             keyboard.OnClosed -= DisableKeyboard;
             keyboard.OnTextSubmitted -= DisableKeyboard;
