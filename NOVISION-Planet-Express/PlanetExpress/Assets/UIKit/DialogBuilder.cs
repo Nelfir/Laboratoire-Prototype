@@ -49,7 +49,7 @@ namespace DefaultNamespace.UIKit
             return this;
         }
 
-        public DialogBuilder OnButtonClicked(UnityAction<DialogButton> OnButtonPressed)
+        public DialogBuilder OnAnyButtonClicked(UnityAction<DialogButton> OnButtonPressed)
         {
             _dialog.OnButtonClicked += OnButtonPressed;
             return this;

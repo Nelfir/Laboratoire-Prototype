@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using DefaultNamespace;
 using DefaultNamespace.UIKit;
 using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Allows to pop UI alert dialogs.
@@ -14,6 +16,39 @@ public class DialogManager : Singleton<DialogManager>
     private DialogController _currentPopupMessage;
 
     private readonly Queue<DialogController> PendingDialogs = new Queue<DialogController>();
+
+
+    public void PopQuestion(string title, string question, UnityAction onYes, UnityAction onNo)
+    {
+        DialogBuilder dialogBuilder = new DialogBuilder();
+
+        DialogButton yes = new DialogButton("No", DialogButtonType.Info);
+        DialogButton no = new DialogButton("Yes", DialogButtonType.Primary);
+
+        PopMessage(new DialogBuilder()
+            .SetTitle(title)
+            .SetDescription(question)
+            .AddButton(yes)
+            .AddButton(no)
+            .OnAnyButtonClicked((action) =>
+            {
+                // Print to console
+                Debug.Log("Action : " + action);
+
+                if (action == yes)
+                {
+                    onYes.Invoke();
+                }
+                else if (action == no)
+                {
+                    onNo.Invoke();
+                }
+                else
+                {
+                    Debug.LogError("Unknown action : " + action);
+                }
+            }).Build());
+    }
 
     /// <summary>
     /// Shows a Dialog to the user.

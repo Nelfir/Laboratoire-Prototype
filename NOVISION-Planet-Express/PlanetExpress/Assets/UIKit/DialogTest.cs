@@ -15,7 +15,7 @@ namespace UIKit
                 .SetDescription("Yeah! I built it from scratch.")
                 .AddButton(new DialogButton("No", DialogButtonType.Error))
                 .AddButton(new DialogButton("Yes", DialogButtonType.Primary))
-                .OnButtonClicked((action) =>
+                .OnAnyButtonClicked((action) =>
                 {
                     // Print to console
                     Debug.Log("Action : " + action);
@@ -29,7 +29,7 @@ namespace UIKit
                 .AddButton(new DialogButton("Yeah sure", DialogButtonType.Error))
                 .AddButton(new DialogButton("No", DialogButtonType.Error))
                 .AddButton(new DialogButton("Yes", DialogButtonType.Primary))
-                .OnButtonClicked((action) =>
+                .OnAnyButtonClicked((action) =>
                 {
                     // Print to console
                     Debug.Log("Action : " + action);
