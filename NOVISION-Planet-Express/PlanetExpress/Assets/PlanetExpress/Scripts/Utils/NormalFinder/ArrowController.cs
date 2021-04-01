@@ -1,4 +1,5 @@
-﻿using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
+﻿using PlanetExpress.Scripts.Enemy;
+using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts.Utils.NormalFinder
@@ -39,9 +40,19 @@ namespace PlanetExpress.Scripts.Utils.NormalFinder
             OriginPointCreator.Origin.GetComponent<TileSelection>().SetStatus(status);
         }
 
+        private static int amountOfPlacedTiles = 0;
+
         public void SetHasTileInSlot(bool hasTileInSlot)
         {
             OriginPointCreator.Origin.GetComponent<TileSelection>().SetHasTileInSlot(hasTileInSlot);
+
+            amountOfPlacedTiles++;
+
+            if (amountOfPlacedTiles > 0)
+            {
+                // Start the enemy spawning
+                FindObjectOfType<EnemySpawner>()?.StartIfNotStarted();
+            }
         }
 
         private Quaternion GetArrowUpRotation()

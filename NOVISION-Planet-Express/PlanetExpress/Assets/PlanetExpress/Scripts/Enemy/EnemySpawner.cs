@@ -161,6 +161,17 @@ namespace PlanetExpress.Scripts.Enemy
             _enemyList = GetComponent<EnemyList>();
         }
 
+        private bool isStarted = false;
+
+        public void StartIfNotStarted()
+        {
+            if (!isStarted)
+            {
+                isStarted = true;
+                NextWave();
+            }
+        }
+
         private void NextWave()
         {
             Waves.NextWave();
