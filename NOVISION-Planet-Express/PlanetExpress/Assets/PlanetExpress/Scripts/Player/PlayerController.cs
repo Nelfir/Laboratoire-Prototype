@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Valve.VR;
 
 namespace PlanetExpress.Scripts.Player
 {
@@ -8,7 +7,8 @@ namespace PlanetExpress.Scripts.Player
     /// </summary>
     public class PlayerController : MonoBehaviour
     {
-        public SteamVR_Action_Vector2 input;
+        // TODO DELETE
+        /*public SteamVR_Action_Vector2 input;
 
         public void Update()
         {
@@ -20,6 +20,6 @@ namespace PlanetExpress.Scripts.Player
 
                 transform.position += horizontalDirection;
             }
-        }
+        }*/
     }
 }

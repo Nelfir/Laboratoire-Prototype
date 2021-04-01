@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Normal (Machine Gun)
-  MaxHealth: 100
+  HealthMax: 0
   Speed: 1
   Level: 1
   BulletSpawnPoints:
@@ -54,8 +54,9 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4747961509672775488, guid: 7d8ec570e3519ab4997b8b8c14540e7f,
     type: 3}
   BulletDamage: 10
+  BulletSpeed: 5
   BulletDelay: 3
-  CurrentHealth: 0
+  HealthCurrent: 0
   TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &2800173982131696575
 PrefabInstance:
@@ -67,6 +68,11 @@ PrefabInstance:
     - target: {fileID: 517154035621628118, guid: d73f25941e13305479f1b277fe22edb9,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181203887116097879, guid: d73f25941e13305479f1b277fe22edb9,
+        type: 3}
+      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6181203887116097879, guid: d73f25941e13305479f1b277fe22edb9,
@@ -86,6 +92,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6181203887116097879, guid: d73f25941e13305479f1b277fe22edb9,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181203887116097879, guid: d73f25941e13305479f1b277fe22edb9,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -97,16 +108,6 @@ PrefabInstance:
     - target: {fileID: 6181203887116097879, guid: d73f25941e13305479f1b277fe22edb9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181203887116097879, guid: d73f25941e13305479f1b277fe22edb9,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181203887116097879, guid: d73f25941e13305479f1b277fe22edb9,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6181203887116097879, guid: d73f25941e13305479f1b277fe22edb9,

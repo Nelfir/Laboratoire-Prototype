@@ -1,7 +1,6 @@
 ﻿namespace PlanetExpress.Scripts.Utils
 {
     using UnityEngine;
-    using System.Collections;
 
     /// <summary>
     /// From Unity's wiki :

@@ -146,10 +146,19 @@ namespace PlanetExpress.Scripts.Enemy
     {
         private EnemyList _enemyList;
 
+
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("Next wave!");
+                NextWave();
+            }
+        }
+
         public void Start()
         {
             _enemyList = GetComponent<EnemyList>();
-            NextWave();
         }
 
         private void NextWave()
@@ -196,7 +205,7 @@ namespace PlanetExpress.Scripts.Enemy
                 var endPos = (PlanetController.Instance.transform.position + directionOnly * 2);
 
                 g.transform.position = startPos;
-                
+
                 EnemyBehaviour enemyBehaviour = g.GetComponent<EnemyBehaviour>();
                 enemyBehaviour.GetComponent<EnemyBehaviour>().StartMove(endPos);
                 enemyBehaviour.GetComponent<EnemyBehaviour>().StartShooting(TileToAttack);
@@ -205,10 +214,11 @@ namespace PlanetExpress.Scripts.Enemy
                  yield return new WaitForSeconds(Waves.CurrentWave.EnemySpawnDelay);*/
             }
 
+            /*
             Debug.Log("Waiting for " + Waves.CurrentWave.EnemySpawnDelay + " seconds (after wave)...");
             yield return new WaitForSeconds(Waves.CurrentWave.TotalWaveDurationSeconds);
 
-            NextWave();
+            NextWave();*/
         }
 
 

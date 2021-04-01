@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Fragile Speedster (Rocket)
-  MaxHealth: 200
+  HealthMax: 0
   Speed: 2
   Level: 1
   BulletSpawnPoints:
@@ -53,8 +53,9 @@ MonoBehaviour:
   BulletPrefab: {fileID: 652106299000229712, guid: 38b4279dd75567c49b8ee5d2a19f33f3,
     type: 3}
   BulletDamage: 10
+  BulletSpeed: 5
   BulletDelay: 3
-  CurrentHealth: 0
+  HealthCurrent: 0
   TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &2608317855807868887
 PrefabInstance:
@@ -67,6 +68,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Space_Ship2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541384082466574879, guid: 99c2a1562aef4324a8837e9bb513cf71,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4541384082466574879, guid: 99c2a1562aef4324a8837e9bb513cf71,
         type: 3}
@@ -85,6 +91,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4541384082466574879, guid: 99c2a1562aef4324a8837e9bb513cf71,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541384082466574879, guid: 99c2a1562aef4324a8837e9bb513cf71,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -96,16 +107,6 @@ PrefabInstance:
     - target: {fileID: 4541384082466574879, guid: 99c2a1562aef4324a8837e9bb513cf71,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4541384082466574879, guid: 99c2a1562aef4324a8837e9bb513cf71,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4541384082466574879, guid: 99c2a1562aef4324a8837e9bb513cf71,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4541384082466574879, guid: 99c2a1562aef4324a8837e9bb513cf71,

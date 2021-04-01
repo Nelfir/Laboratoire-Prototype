@@ -1,5 +1,4 @@
-﻿using System;
-using PlanetExpress.Scripts.Core;
+﻿using PlanetExpress.Scripts.Core;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts.Bullets
