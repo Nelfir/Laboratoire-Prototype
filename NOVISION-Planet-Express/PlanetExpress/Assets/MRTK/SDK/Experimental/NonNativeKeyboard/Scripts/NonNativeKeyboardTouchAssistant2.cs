@@ -7,10 +7,9 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
     /// <summary>
     /// Adds touch events to the NonNativeKeyboard buttons (and a tap sound)
     /// </summary>
-    public class NonNativeKeyboardTouchAssistant : MonoBehaviour
+    public class NonNativeKeyboardTouchAssistant2 : MonoBehaviour
     {
-        [SerializeField]
-        private AudioClip clickSound = null;
+        [SerializeField] private AudioClip clickSound = null;
 
         private AudioSource clickSoundPlayer;
 
