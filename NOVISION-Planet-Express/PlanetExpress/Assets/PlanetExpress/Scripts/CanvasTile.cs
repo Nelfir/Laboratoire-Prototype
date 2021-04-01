@@ -12,7 +12,7 @@ public class CanvasTile : MonoBehaviour
     private HealthUI _healthUI;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         _healthUI = GetComponentInChildren<HealthUI>();
         gameObject.AddComponent<CameraFacingBillboard>();
@@ -27,8 +27,7 @@ public class CanvasTile : MonoBehaviour
     {
         Level.text = "Level " + level;
     }
-
-
+    
     public void UpdateHealth(int current, int max)
     {
         _healthUI.UpdateHealth(current, max);

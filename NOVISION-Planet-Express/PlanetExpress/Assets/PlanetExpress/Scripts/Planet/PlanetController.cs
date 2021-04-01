@@ -5,6 +5,7 @@ using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using PlanetExpress.Scripts.Utils;
 using PlanetExpress.Scripts.Utils.NormalFinder;
 using PlanetExpress.Scripts.Utils.Scripts.Utils.Objects;
+using PlanetExpress.Scripts.Utils.VR;
 using PlanetExpress.Scripts.Utils.VR.Valve.VR.InteractionSystem.Sample;
 using UnityEngine;
 
@@ -102,7 +103,7 @@ namespace PlanetExpress.Scripts.Planet
                 obj.ParentSlot = null;
             }
 
-            LockToPoint lockToPointOrigin = obj.GetComponent<LockToPoint>();
+            LockToPoint lockToPointOrigin = obj.GetComponent<LockToPointOrigin>();
 
             Debug.Log("Start");
             Debug.Log(lockToPointOrigin.snapTo);
