@@ -18,7 +18,7 @@ namespace PlanetExpress.Scripts.Utils.NormalFinder
             PlaceArrowAtOriginAndRotation(GetArrowUpRotation());
             CreateTileSlotComponentOnParent();
 
-            Hide();
+            //Hide();
             SetStatus(TileSelectionStatus.Hidden);
         }
 

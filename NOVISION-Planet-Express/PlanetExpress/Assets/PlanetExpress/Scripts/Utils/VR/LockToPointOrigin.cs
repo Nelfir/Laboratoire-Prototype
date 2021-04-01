@@ -26,6 +26,8 @@ namespace PlanetExpress.Scripts.Utils.VR
     {
         public class LockToPoint : MonoBehaviour
         {
+            public bool Move;
+
             public Transform snapTo;
             private Rigidbody body;
             public float snapTime = 2;
@@ -40,6 +42,11 @@ namespace PlanetExpress.Scripts.Utils.VR
             private void FixedUpdate()
             {
                 dropTimer += Time.deltaTime / (snapTime / 2);
+
+                if (!Move)
+                {
+                    return;
+                }
 
                 body.isKinematic = dropTimer > 1;
 

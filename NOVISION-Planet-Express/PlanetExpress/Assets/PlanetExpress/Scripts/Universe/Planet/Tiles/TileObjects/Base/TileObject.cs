@@ -1,6 +1,7 @@
 ﻿using PlanetExpress.Scripts.Core;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
+using PlanetExpress.Scripts.Utils.VR;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
@@ -30,7 +31,13 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
             _canvasTile = GetComponentInChildren<CanvasTile>();
             UpdateUI();
 
+            AddLockToPointComponent();
             AddDamageableComponent();
+        }
+
+        private void AddLockToPointComponent()
+        {
+            this.gameObject.AddComponent<LockToPointOrigin>();
         }
 
         private void AddDamageableComponent()

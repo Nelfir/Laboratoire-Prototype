@@ -12,9 +12,11 @@ public class UIFlowController : MonoBehaviour
     public GameObject LoginUI;
     public GameObject SettingsUI;
     public GameObject ForgotPassword;
+    public GameObject ActualGame;
 
     [InspectorNote("The buttons that manage the UIs.")]
     public Button OnRegisterCompleted;
+
     public Button OnSignupInstead;
     public Button OnLoginInstead;
     public Button OnLoginCompleted;
@@ -31,7 +33,7 @@ public class UIFlowController : MonoBehaviour
 
         OnLoginInstead.onClick.AddListener(() => Show(LoginUI));
         OnLoginCompleted.onClick.AddListener(() => Show(SettingsUI));
-        OnSettingsClose.onClick.AddListener(() => Show(null));
+        OnSettingsClose.onClick.AddListener(() => Show(ActualGame));
 
         OnForgotPassword.onClick.AddListener(() => Show(ForgotPassword));
         OnForgotPasswordCompleted.onClick.AddListener(() => Show(LoginUI));
@@ -45,5 +47,6 @@ public class UIFlowController : MonoBehaviour
         LoginUI.SetActive(show == LoginUI);
         SettingsUI.SetActive(show == SettingsUI);
         ForgotPassword.SetActive(show == ForgotPassword);
+        ActualGame.SetActive(show == ActualGame);
     }
 }

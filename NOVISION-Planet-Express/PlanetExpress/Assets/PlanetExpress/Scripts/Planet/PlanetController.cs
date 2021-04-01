@@ -103,6 +103,14 @@ namespace PlanetExpress.Scripts.Planet
             }
 
             LockToPoint lockToPointOrigin = obj.GetComponent<LockToPoint>();
+
+            Debug.Log("Start");
+            Debug.Log(lockToPointOrigin.snapTo);
+
+            Debug.Log(slot.ArrowController);
+            Debug.Log(slot.ArrowController.OriginPointCreator);
+            Debug.Log(slot.ArrowController.OriginPointCreator.TileOriginTransform);
+
             lockToPointOrigin.snapTo = slot.ArrowController.OriginPointCreator.TileOriginTransform.transform;
 
             obj.ParentSlot = slot;

@@ -1,8 +1,12 @@
-﻿using PlanetExpress.Scripts.Currency;
+﻿using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.UI;
+using PlanetExpress.Scripts.Currency;
 using PlanetExpress.Scripts.Planet;
 using PlanetExpress.Scripts.Shop;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
+using PlanetExpress.Scripts.Utils.VR;
+using PlanetExpress.Scripts.Utils.VR.Valve.VR.InteractionSystem.Sample;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts
@@ -12,10 +16,35 @@ namespace PlanetExpress.Scripts
         private TileObject _tileObject;
         private bool _isCurrentlyAttachedToHand;
 
+
+        public LockToPointOrigin LockToPointOrigin;
+
         public void Start()
         {
             InitTileObject();
-            InitHandleHoverEvents();
+            InitManipulatorEvents();
+        }
+
+        private void InitManipulatorEvents()
+        {
+            ObjectManipulator o = GetComponent<ObjectManipulator>();
+            o.OnManipulationStarted.AddListener(OnManipulationStarted);
+            o.OnManipulationEnded.AddListener(OnManipulationEnded);
+        }
+
+        private void OnManipulationStarted(ManipulationEventData arg0)
+        {
+            if (LockToPointOrigin == null)
+            {
+                LockToPointOrigin = GetComponent<LockToPointOrigin>();
+            }
+
+            // Stop moving with parent and start moving with hand
+            LockToPointOrigin.Move = false;
+
+
+            Debug.Log("Object " + name + " was attached to hand.");
+            _isCurrentlyAttachedToHand = true;
         }
 
         private void InitTileObject()
@@ -25,41 +54,26 @@ namespace PlanetExpress.Scripts
             if (_tileObject == null) Debug.LogError("Null tile object!");
         }
 
-        private void InitHandleHoverEvents()
+        public void OnManipulationEnded(ManipulationEventData arg0)
         {
-            // Register the grab events
-            
-            
-            // TODO INTERACTION SYSTEM
-            
-            /*InteractableHoverEvents interactableHoverEvents = GetComponent<InteractableHoverEvents>();
+            // Start going to point
+            LockToPointOrigin.Move = true;
 
-            interactableHoverEvents.onAttachedToHand.AddListener(() =>
+            Debug.Log("Object " + name + " was detached from hand.");
+            _isCurrentlyAttachedToHand = false;
+
+            // Hide the selection
+            if (nearestTileSlot != null)
             {
-                Debug.Log("Object " + name + " was attached to hand.");
-                _isCurrentlyAttachedToHand = true;
-            });
+                nearestTileSlot.ArrowController.SetStatus(TileSelectionStatus.Hidden);
+            }
 
-            interactableHoverEvents.onDetachedFromHand.AddListener(() =>
-            {
-                Debug.Log("Object " + name + " was detached from hand.");
-                _isCurrentlyAttachedToHand = false;
+            Debug.Log("Placing tile here...");
 
-                bool isReplacing = false;
+            HandleShopItem(GetComponent<ShopItem>());
 
-                // Hide the selection
-                if (nearestTileSlot != null)
-                {
-                    nearestTileSlot.ArrowController.SetStatus(TileSelectionStatus.Hidden);
-                }
-
-                Debug.Log("Placing tile here...");
-
-                HandleShopItem(GetComponent<ShopItem>());
-
-                // Calculate the new position
-                PlanetController.Instance.Place(_tileObject, nearestTileSlot);
-            });*/
+            // Calculate the new position
+            PlanetController.Instance.Place(_tileObject, nearestTileSlot);
         }
 
         private void HandleShopItem(ShopItem shopItem)
