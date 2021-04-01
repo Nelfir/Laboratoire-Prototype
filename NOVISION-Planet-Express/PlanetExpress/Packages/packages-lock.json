@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.unity.2d.sprite": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,
@@ -50,6 +44,16 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0",
         "com.unity.modules.physics": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.render-pipelines.universal": {
+      "version": "7.3.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "7.3.1",
+        "com.unity.shadergraph": "7.3.1"
       },
       "url": "https://packages.unity.com"
     },
@@ -136,6 +140,13 @@
         "com.unity.xr.management": "3.2.16",
         "com.unity.ugui": "1.0.0"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.oculus.standalone": {
+      "version": "2.38.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openvr.standalone": {
