@@ -144,6 +144,8 @@ namespace PlanetExpress.Scripts.Enemy
 
     public class EnemySpawner : MonoBehaviour
     {
+        public GameObject CountdownCanvasPrefab;
+
         private EnemyList _enemyList;
 
 
@@ -176,10 +178,22 @@ namespace PlanetExpress.Scripts.Enemy
         {
             Waves.NextWave();
             Debug.Log("Next wave : " + Waves.CurrentWave.Name);
-            StartCoroutine(nameof(GoWave));
+            StartCoroutine(nameof(StartCountdown));
         }
 
-        private IEnumerator GoWave()
+        private IEnumerator StartCountdown()
+        {
+            GameObject o = Instantiate(CountdownCanvasPrefab);
+            o.GetComponent<CountdownCanvas>().OnCompleted += () =>
+            {
+                // Start the wave
+                StartCoroutine(GoWaveActual());
+            };
+            
+            yield break;
+        }
+
+        private IEnumerator GoWaveActual()
         {
             for (int i = 0; i < Waves.CurrentWave.EnemyCount; i++)
             {
@@ -193,16 +207,14 @@ namespace PlanetExpress.Scripts.Enemy
 
                 Debug.Log("Spawning : " + nextEnemy.name);
                 GameObject g = Instantiate(nextEnemy);
-
-
+                
                 Vector3 TileToAttack = PlanetController.Instance.GetNextEnemyTargetTile();
 
                 if (TileToAttack == Vector3.negativeInfinity)
                 {
                     yield break;
                 }
-
-
+                
                 // vector pointing from the planet to the player
                 Vector3 difference = TileToAttack - PlanetController.Instance.transform.position;
 

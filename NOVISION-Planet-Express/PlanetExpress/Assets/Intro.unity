@@ -1401,6 +1401,11 @@ PrefabInstance:
       propertyPath: m_textInfo.characterCount
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 1074150809771405200, guid: 18470d71939382448be2ecd06efa9662,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 1600130203466990489, guid: 18470d71939382448be2ecd06efa9662,
         type: 3}
       propertyPath: m_IsActive
@@ -2383,6 +2388,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2113316641 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7788707497201813552, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7788707497352243371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98de877dee5fc341b4eb59dfdab266c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2121908386
 GameObject:
   m_ObjectHideFlags: 0
@@ -30696,6 +30713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d468f03ef2b0005429717eabec8f6eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CountdownCanvasPrefab: {fileID: 115296922064566410, guid: 8657a504e5184a94da15cee6769f4afa,
+    type: 3}
 --- !u!4 &7788707497246557951
 Transform:
   m_ObjectHideFlags: 0
@@ -31060,7 +31079,7 @@ PrefabInstance:
         type: 3}
       propertyPath: constraintsManager
       value: 
-      objectReference: {fileID: 7788707497201813552}
+      objectReference: {fileID: 2113316641}
     - target: {fileID: 8236846081809197517, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
         type: 3}
       propertyPath: m_RootOrder
