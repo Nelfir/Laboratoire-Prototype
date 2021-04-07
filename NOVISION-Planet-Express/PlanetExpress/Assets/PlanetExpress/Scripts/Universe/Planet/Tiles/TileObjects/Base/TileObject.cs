@@ -1,4 +1,6 @@
-﻿using PlanetExpress.Scripts.Core;
+﻿using System.Collections;
+using System.Collections.Generic;
+using PlanetExpress.Scripts.Core;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using PlanetExpress.Scripts.Utils.VR;
@@ -37,7 +39,7 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
 
         private void AddLockToPointComponent()
         {
-            this.gameObject.AddComponent<LockToPointOrigin>();
+            gameObject.AddComponent<LockToPointOrigin>();
         }
 
         private void AddDamageableComponent()
@@ -56,6 +58,22 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
 
                 Debug.Log(name + " damaged for " + HealthCurrent + " / " + HealthMax + ".");
             });
+
+
+            StartCoroutine(nameof(BeginHealing));
+        }
+        
+        public IEnumerator BeginHealing()
+        {
+            if (HealthCurrent < HealthMax)
+            {
+                HealthCurrent += 1;
+            }
+
+            yield return new WaitForSeconds(1);
+
+            StartCoroutine(BeginHealing());
+            yield break;
         }
 
         private void CheckIfDead()

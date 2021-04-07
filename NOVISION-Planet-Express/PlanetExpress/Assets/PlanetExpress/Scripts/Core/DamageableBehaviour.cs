@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace PlanetExpress.Scripts.Core
@@ -27,7 +29,10 @@ namespace PlanetExpress.Scripts.Core
                 r = gameObject.AddComponent<Rigidbody>();
                 r.isKinematic = true;
             }
+
         }
+
+
 
         public void Init(Squad _squad)
         {
