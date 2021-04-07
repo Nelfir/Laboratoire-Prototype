@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using PlanetExpress.Scripts.Core;
+using PlanetExpress.Scripts.Currency;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileSlots;
 using PlanetExpress.Scripts.Utils.VR;
@@ -35,6 +36,9 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
 
             AddLockToPointComponent();
             AddDamageableComponent();
+
+            // Increment population count
+            PopulationController.Instance.Value += 1;
         }
 
         private void AddLockToPointComponent()
@@ -83,6 +87,8 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
                 Debug.Log("Tile " + name + " was destroyed!");
                 Destroy(gameObject);
                 // TODO play explosion sound
+                
+                PopulationController.Instance.Value -= 1;
             }
         }
 
