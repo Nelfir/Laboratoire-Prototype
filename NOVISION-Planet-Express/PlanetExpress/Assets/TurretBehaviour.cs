@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using Oculus.Platform;
+using PlanetExpress.Scripts.Bullets;
+using PlanetExpress.Scripts.Core;
 using PlanetExpress.Scripts.Enemy;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base;
 using UnityEngine;
@@ -39,8 +42,17 @@ public class TurretBehaviour : TileObject
         }
 
         Debug.Log("Closest enemy is " + enemy + ".");
-        
-        
-        
+
+
+        GameObject bulletPref = Resources.Load<GameObject>("SpaceShip/BulletBig");
+
+        Debug.Log("Bullet is : " + bulletPref.name);
+
+        GameObject bullet = Instantiate(bulletPref, transform);
+
+        Debug.Log("Bullet : " + bullet.name);
+
+        BulletBehaviour bulletBehaviour = bullet.GetComponent<BulletBehaviour>();
+        bulletBehaviour.SetProperties(10, 1, Squad.Enemy);
     }
 }

@@ -206,6 +206,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82ede006e9deab46b2cd789bf3210c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Turret
+  ParentSlot: {fileID: 0}
+  Level: 0
+  HealthMax: 100
+  Gun: {fileID: 0}
+  TurretSpecs: {fileID: 0}
 --- !u!1 &8475173859500201910
 GameObject:
   m_ObjectHideFlags: 0
