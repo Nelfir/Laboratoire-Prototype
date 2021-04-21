@@ -34,6 +34,7 @@ namespace PlanetExpress.Scripts
 
         private void OnManipulationStarted(ManipulationEventData arg0)
         {
+            
             if (LockToPointOrigin == null)
             {
                 LockToPointOrigin = GetComponent<LockToPointOrigin>();
