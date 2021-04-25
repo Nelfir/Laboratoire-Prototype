@@ -34,6 +34,7 @@ namespace PlanetExpress.Scripts
 
         private void OnManipulationStarted(ManipulationEventData arg0)
         {
+            SoundManager.Instance.PlaySound("Sons\3. SFX_Tuiles (Son Mécanique)\A) Général\1. Déplacement\1. Prendre\Déplacement_Prendre-004");
             
             if (LockToPointOrigin == null)
             {
