@@ -2,12 +2,13 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using Microsoft.MixedReality.Toolkit.UI;
+using MRTK.SDK.Features.UX.Scripts.ScrollingObjectCollection;
 using UnityEngine;
 
 namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 {
     /// <summary>
-    /// Example script of how to navigate a <see cref="Microsoft.MixedReality.Toolkit.UI.ScrollingObjectCollection"/> by pagination.
+    /// Example script of how to navigate a <see cref="ScrollingObjectCollection"/> by pagination.
     /// Allows the call to scroll pagination methods from the inspector.
     /// </summary>
     public class ScrollablePagination : MonoBehaviour
