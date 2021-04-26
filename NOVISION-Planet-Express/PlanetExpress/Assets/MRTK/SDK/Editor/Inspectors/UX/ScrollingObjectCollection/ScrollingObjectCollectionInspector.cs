@@ -4,11 +4,12 @@
 using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Utilities;
 using Microsoft.MixedReality.Toolkit.Utilities.Editor;
+using MRTK.SDK.Features.UX.Scripts.ScrollingObjectCollection;
 using UnityEditor;
 using UnityEngine;
 
-using EditMode = Microsoft.MixedReality.Toolkit.UI.ScrollingObjectCollection.EditMode;
-using PaginationMode = Microsoft.MixedReality.Toolkit.UI.ScrollingObjectCollection.PaginationMode;
+using EditMode = MRTK.SDK.Features.UX.Scripts.ScrollingObjectCollection.ScrollingObjectCollection.EditMode;
+using PaginationMode = MRTK.SDK.Features.UX.Scripts.ScrollingObjectCollection.ScrollingObjectCollection.PaginationMode;
 
 namespace Microsoft.MixedReality.Toolkit.Editor
 {

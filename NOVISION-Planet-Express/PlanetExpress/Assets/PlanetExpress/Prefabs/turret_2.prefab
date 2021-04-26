@@ -210,8 +210,8 @@ MonoBehaviour:
   ParentSlot: {fileID: 0}
   Level: 0
   HealthMax: 100
-  Gun: {fileID: 0}
-  TurretSpecs: {fileID: 0}
+  Gun: {fileID: 5523829516430388178}
+  TurretSpecs: {fileID: 11400000, guid: 522750c387adfb641827909250950615, type: 2}
 --- !u!1 &8475173859500201910
 GameObject:
   m_ObjectHideFlags: 0

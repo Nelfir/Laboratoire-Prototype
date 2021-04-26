@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OculusConfigurationProfile
   m_EditorClassIdentifier: 
   isCustomProfile: 1
-  targetExperienceScale: 3
+  targetExperienceScale: 1
   enableCameraSystem: 1
   cameraProfile: {fileID: 11400000, guid: 1e7d3837be92f4f45822ae77cc60fe58, type: 2}
   cameraSystemType:

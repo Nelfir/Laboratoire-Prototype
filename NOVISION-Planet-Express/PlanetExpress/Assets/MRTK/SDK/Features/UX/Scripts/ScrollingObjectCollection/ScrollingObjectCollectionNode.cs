@@ -3,6 +3,7 @@
 
 using Microsoft.MixedReality.Toolkit.Utilities;
 using System;
+using MRTK.SDK.Features.UX.Scripts.ScrollingObjectCollection;
 
 namespace Microsoft.MixedReality.Toolkit.UI
 {
