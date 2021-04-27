@@ -19,7 +19,6 @@ public class UIFlowController : MonoBehaviour
     public Button OnSignupInstead;
     public Button OnLoginInstead;
     public Button OnLoginCompleted;
-    public Button OnSettingsClose;
     public Button OnForgotPassword;
     public Button OnForgotPasswordCompleted;
 
@@ -30,22 +29,19 @@ public class UIFlowController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OnRegisterCompleted.onClick.AddListener(() => Show(LoginUI));
+        /*OnRegisterCompleted.onClick.AddListener(() => Show(LoginUI));
 
         OnSignupInstead.onClick.AddListener(() => Show(RegisterUI));
 
         OnLoginInstead.onClick.AddListener(() => Show(LoginUI));
-        OnSettingsClose.onClick.AddListener(() =>
-            {
-                Show(ActualGame);
-                AudioSource.PlayOneShot(SamNarrationAudioClip);
-            }
-        );
 
         OnForgotPassword.onClick.AddListener(() => Show(ForgotPassword));
         OnForgotPasswordCompleted.onClick.AddListener(() => Show(LoginUI));
 
-        Show(RegisterUI);
+        Show(RegisterUI);*/
+
+        Show(ActualGame);
+        AudioSource.PlayOneShot(SamNarrationAudioClip);
     }
 
     private void Show(Object show)

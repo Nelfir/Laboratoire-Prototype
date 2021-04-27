@@ -13,9 +13,8 @@ public class InventoryManager : MonoBehaviour
     public IEnumerator LetsGo()
     {
         yield return new WaitForSeconds(3);
-
-
-        GazeProvider[] body = GameObject.FindObjectsOfType<GazeProvider>();
+        
+        GazeProvider[] body = FindObjectsOfType<GazeProvider>();
 
         Debug.Log("Found " + body.Length + " objects of type GazeProvider.");
 
