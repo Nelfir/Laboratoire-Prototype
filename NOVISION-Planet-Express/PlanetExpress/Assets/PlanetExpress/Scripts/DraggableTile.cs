@@ -34,8 +34,8 @@ namespace PlanetExpress.Scripts
 
         private void OnManipulationStarted(ManipulationEventData arg0)
         {
-            SoundManager.Instance.PlaySound("Sons\3. SFX_Tuiles (Son Mécanique)\A) Général\1. Déplacement\1. Prendre\Déplacement_Prendre-004");
-            
+            SoundManager.Instance.PlaySound("Sons/3. SFX_Tuiles (Son Mécanique)/A) Général/1. Déplacement/1. Déposer/Déplacement_Prendre-004");
+
             if (LockToPointOrigin == null)
             {
                 LockToPointOrigin = GetComponent<LockToPointOrigin>();
@@ -58,6 +58,9 @@ namespace PlanetExpress.Scripts
 
         public void OnManipulationEnded(ManipulationEventData arg0)
         {
+
+            SoundManager.Instance.PlaySound("Sons/3. SFX_Tuiles (Son Mécanique)/A) Général/1. Déplacement/2. Déposer/Déplacement_Déposer-004");
+
             // Start going to point
             LockToPointOrigin.Move = true;
 

@@ -9,6 +9,7 @@ namespace PlanetExpress.Scripts.Shop
 
         public void Start()
         {
+            // SoundManager.Instance.PlaySound("Sons/3. SFX_Tuiles (Son Mécanique)/A) Général/2. Autres/1. Vendre/Vendu-001");
             LoadShopItemsAndCreateTileObjects();
         }
 
