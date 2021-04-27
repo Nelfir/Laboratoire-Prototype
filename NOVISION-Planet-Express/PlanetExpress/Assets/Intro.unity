@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1428268608}
-  m_IndirectSpecularColor: {r: 0.04327238, g: 0.04461724, b: 0.058884095, a: 1}
+  m_IndirectSpecularColor: {r: 0.043387376, g: 0.044548247, b: 0.05929023, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2919,6 +2919,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoConstraintSelection: 1
   selectedConstraints: []
+--- !u!114 &1855047203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7788707497201813552, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7788707497352243371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98de877dee5fc341b4eb59dfdab266c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1955479076
 GameObject:
   m_ObjectHideFlags: 0
@@ -4040,6 +4052,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673227729376072232, guid: c0931c4da6d91ea429abedb10290dd16,
+        type: 3}
+      propertyPath: OnRecordingStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8300000, guid: 491d0489e02056d4d979fb908eee07c5, type: 3}
+    - target: {fileID: 3673227729376072232, guid: c0931c4da6d91ea429abedb10290dd16,
+        type: 3}
+      propertyPath: OnRecordingStarted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3716424188330356753, guid: c0931c4da6d91ea429abedb10290dd16,
         type: 3}
@@ -6151,7 +6173,22 @@ PrefabInstance:
         type: 3}
       propertyPath: constraintsManager
       value: 
-      objectReference: {fileID: 1625943189}
+      objectReference: {fileID: 1855047203}
+    - target: {fileID: 7788707497201813553, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
+        type: 3}
+      propertyPath: onManipulationStarted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788707497201813553, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
+        type: 3}
+      propertyPath: onManipulationStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788707497201813553, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
+        type: 3}
+      propertyPath: onManipulationStarted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8236846081809197517, guid: 307cd53b5fd8fae4bb2d706d3d6ca47a,
         type: 3}
       propertyPath: m_RootOrder
