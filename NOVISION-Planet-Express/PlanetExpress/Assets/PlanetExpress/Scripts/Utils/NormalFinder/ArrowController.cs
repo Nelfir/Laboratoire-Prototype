@@ -48,7 +48,7 @@ namespace PlanetExpress.Scripts.Utils.NormalFinder
 
             amountOfPlacedTiles++;
 
-            if (amountOfPlacedTiles > 0)
+            if (amountOfPlacedTiles > 4)
             {
                 // Start the enemy spawning
                 FindObjectOfType<EnemySpawner>()?.StartIfNotStarted();

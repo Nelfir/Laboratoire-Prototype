@@ -11,13 +11,17 @@ namespace PlanetExpress.Scripts.Utils.VR
     {
         public new void Start()
         {
+            UpdateSnapToOrigin();
+            base.Start();
+        }
+
+        public void UpdateSnapToOrigin()
+        {
             GameObject snapToOrigin = new GameObject("SnapToOrigin - " + name);
             snapToOrigin.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             snapToOrigin.transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
 
             snapTo = snapToOrigin.transform;
-
-            base.Start();
         }
     }
 

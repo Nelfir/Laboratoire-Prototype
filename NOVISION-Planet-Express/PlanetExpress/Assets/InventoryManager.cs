@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Microsoft.MixedReality.Toolkit.Input;
+using PlanetExpress.Scripts.Utils.VR;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public Transform Follow;
+
     public void Start()
     {
         StartCoroutine(nameof(LetsGo));
@@ -13,11 +17,26 @@ public class InventoryManager : MonoBehaviour
     public IEnumerator LetsGo()
     {
         yield return new WaitForSeconds(3);
-        
+
         GazeProvider[] body = FindObjectsOfType<GazeProvider>();
 
         Debug.Log("Found " + body.Length + " objects of type GazeProvider.");
 
-        this.transform.SetParent(body[0].transform, false);
+        Follow = body[0].transform;
+
+        foreach (var lockToPointOrigin in gameObject.GetComponentsInChildren<LockToPointOrigin>())
+        {
+            lockToPointOrigin.UpdateSnapToOrigin();
+        }
+        
+    }
+
+
+    public void Update()
+    {
+        if (Follow)
+        {
+            this.gameObject.transform.position = Follow.position;
+        }
     }
 }

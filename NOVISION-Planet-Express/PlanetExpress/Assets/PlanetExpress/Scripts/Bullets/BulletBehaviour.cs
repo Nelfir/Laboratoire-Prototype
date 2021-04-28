@@ -1,4 +1,5 @@
-﻿using PlanetExpress.Scripts.Core;
+﻿using System.Collections;
+using PlanetExpress.Scripts.Core;
 using UnityEngine;
 
 namespace PlanetExpress.Scripts.Bullets
@@ -7,11 +8,21 @@ namespace PlanetExpress.Scripts.Bullets
     {
         private float _speed = 1;
 
+
+        private float _lifeTime = 10;
+
         private DamagingBehaviour _damagingBehaviour;
 
         public void Awake()
         {
             _damagingBehaviour = gameObject.AddComponent<DamagingBehaviour>();
+            StartCoroutine(nameof(Die));
+        }
+
+        public IEnumerator Die()
+        {
+            yield return new WaitForSeconds(_lifeTime);
+            Destroy(this.gameObject);
         }
 
         public void SetProperties(int damage, float speed, Squad squad)

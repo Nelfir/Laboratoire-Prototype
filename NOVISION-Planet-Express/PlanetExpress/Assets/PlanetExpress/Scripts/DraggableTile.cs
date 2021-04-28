@@ -58,11 +58,14 @@ namespace PlanetExpress.Scripts
 
         public void OnManipulationEnded(ManipulationEventData arg0)
         {
-
             SoundManager.Instance.PlaySound("Sons/3. SFX_Tuiles (Son Mécanique)/A) Général/1. Déplacement/2. Déposer/Déplacement_Déposer-004");
 
             // Start going to point
-            LockToPointOrigin.Move = true;
+
+            if (LockToPointOrigin)
+            {
+                LockToPointOrigin.Move = true;
+            }
 
             Debug.Log("Object " + name + " was detached from hand.");
             _isCurrentlyAttachedToHand = false;

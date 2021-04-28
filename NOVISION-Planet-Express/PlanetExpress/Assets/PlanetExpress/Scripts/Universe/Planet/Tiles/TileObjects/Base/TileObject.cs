@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Microsoft.MixedReality.Toolkit.UI;
 using PlanetExpress.Scripts.Core;
 using PlanetExpress.Scripts.Currency;
 using PlanetExpress.Scripts.Universe.Planet.Tiles.Shared;
@@ -37,8 +38,31 @@ namespace PlanetExpress.Scripts.Universe.Planet.Tiles.TileObjects.Base
             AddLockToPointComponent();
             AddDamageableComponent();
 
+
+            ShowCanvasTileOnHover();
+            
             // Increment population count
             PopulationController.Instance.Value += 1;
+        }
+
+        private void ShowCanvasTileOnHover()
+        {
+            ObjectManipulator h = GetComponent<ObjectManipulator>();
+
+            CanvasTile c = GetComponentInChildren<CanvasTile>();
+            
+            h.OnHoverEntered.AddListener((e) =>
+            {
+                c.gameObject.SetActive(true);
+            });
+            
+            h.OnHoverExited.AddListener((e) =>
+            {
+                c.gameObject.SetActive(false);
+            });
+            
+            c.gameObject.SetActive(false);
+            
         }
 
         private void AddLockToPointComponent()
