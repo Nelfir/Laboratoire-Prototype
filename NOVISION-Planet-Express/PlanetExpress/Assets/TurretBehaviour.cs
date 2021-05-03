@@ -31,6 +31,9 @@ public class TurretBehaviour : TileObject
 
     private void Shoot()
     {
+        
+        Debug.Log("Turret started");
+        
         EnemyBehaviour[] enemies = FindObjectsOfType<EnemyBehaviour>();
 
         EnemyBehaviour enemy = enemies.FindClosestFrom(gameObject);

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dd0621385c45379895727e23cfd0bb, type: 3}
   m_Name: BasicTurret
   m_EditorClassIdentifier: 
-  delay: 0
+  delay: 1

@@ -149,6 +149,9 @@ namespace PlanetExpress.Scripts.Enemy
         private EnemyList _enemyList;
 
 
+        public AudioSource AudioSource;
+        public AudioClip AudioClip;
+
         public void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -169,9 +172,17 @@ namespace PlanetExpress.Scripts.Enemy
         {
             if (!isStarted)
             {
+
+                PlayMusic();
+                
                 isStarted = true;
                 NextWave();
             }
+        }
+
+        private void PlayMusic()
+        {
+            AudioSource.PlayOneShot(AudioClip);
         }
 
         private void NextWave()
